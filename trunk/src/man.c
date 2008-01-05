@@ -26,13 +26,12 @@
 void man_draw (man *m)
 {
 	if (m->evil)
-		glColor3f (1.0, 0.0, 0.0);			/* red evil man! */
+		glColor3f (1.0, 0.0, 0.0);		/* FIXME: doesn't draw in red :S */
 	else
 		glColor3f (0.5, 0.5, 0.5);
 	
 	glPushMatrix ();
 	glTranslatef (m->x, m->y, m->z);
-	glScalef (0.5, 0.5, 0.5);				/* TODO: we need to do something about that */
 	glutSolidSphere (m->radius, 100, 100);
 	glPopMatrix ();
 }
