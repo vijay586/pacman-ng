@@ -38,25 +38,11 @@ void display (void)
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
 	
-	GLfloat mat_ambient [] = {0.7f, 0.7f, 0.7, 1.0f};
-	GLfloat mat_diffuse [] = {0.6f, 0.6f, 0.6, 1.0f};
-	GLfloat mat_specular [] = {1.0f, 1.0f, 1.0, 1.0f};
-	GLfloat mat_shininess [] = {50};
-	
-	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
-	glMaterialfv (GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
-	
-	GLfloat lightIntensity [] = {0.7f, 0.7f, 1.0f, 1.0f};
-	GLfloat light_position [] = {-0.0f, 6.0f, 3.0f, 0.0f};
-	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
-	glLightfv (GL_LIGHT0, GL_DIFFUSE, lightIntensity);
-	
 	/* drawing */
-	glColor3f (1.0, 1.0, 1.0);
+	glColor3f (0.5, 0.5, 0.5);
 	glPushMatrix ();
-	glTranslatef (0.0, -1.0, -2.0);
+	glTranslatef (0.0, -0.5, -2.0);
+	glScalef (0.5, 0.5, 0.5);
 	glutSolidSphere (0.5, 20, 20);
 	glPopMatrix ();
 	
@@ -73,7 +59,17 @@ void init (void)
 	glLoadIdentity ();
 	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
 	glEnable (GL_DEPTH_TEST);
+	glEnable (GL_LIGHTING);
+	glEnable (GL_LIGHT0);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
+	
+	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat mat_shininess[] = { 50.0 };
+	GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
+
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
 /* called when window is resized */
