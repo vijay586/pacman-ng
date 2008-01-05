@@ -33,6 +33,6 @@ void man_draw (man *m)
 	glPushMatrix ();
 	glTranslatef (m->x, m->y, m->z);
 	glScalef (0.5, 0.5, 0.5);				/* TODO: we need to do something about that */
-	glutSolidSphere (m->radius, 20, 20);
+	glutSolidSphere (m->radius, 100, 100);
 	glPopMatrix ();
 }
