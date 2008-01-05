@@ -24,7 +24,7 @@
 #include "material.h"
 
 /* NOTE: should only be called from draw_* functions! */
-void material_set (float r, float g, float b)
+void material_set_color (float r, float g, float b)
 {
 	GLfloat mat_ambient [] = {r, g, b, 1.0};
 	GLfloat mat_specular [] = {r, g, b, 1.0};

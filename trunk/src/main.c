@@ -88,7 +88,7 @@ void init (void)
 	glEnable (GL_NORMALIZE);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 	
-	material_set (0.5, 0.5, 0.5);
+	material_set_color (0.5, 0.5, 0.5);
 }
 
 /* called when window is resized */

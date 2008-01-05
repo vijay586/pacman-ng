@@ -23,6 +23,6 @@
 #ifndef __MATERIAL
 #define __MATERIAL
 
-void material_set (float r, float g, float b);
+void material_set_color (float r, float g, float b);
 
 #endif
