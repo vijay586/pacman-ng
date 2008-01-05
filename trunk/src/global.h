@@ -20,19 +20,17 @@
  * along with pacman-ng.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "man.h"
-#include <GL/glut.h>
+#ifndef __GLOBAL
+#define __GLOBAL
 
-void man_draw (man *m)
+int win_w, win_h;
+
+enum _boolean
 {
-	if (m->evil)
-		glColor3f (1.0, 0.0, 0.0);			/* red evil man! */
-	else
-		glColor3f (0.5, 0.5, 0.5);
-	
-	glPushMatrix ();
-	glTranslatef (m->x, m->y, m->z);
-	glScalef (0.5, 0.5, 0.5);				/* TODO: we need to do something about that */
-	glutSolidSphere (m->radius, 20, 20);
-	glPopMatrix ();
-}
+	FALSE = 0,
+	TRUE = 1
+};
+
+typedef enum _boolean boolean;
+
+#endif
