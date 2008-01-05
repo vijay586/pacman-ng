@@ -80,21 +80,19 @@ void init (void)
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
-	//gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
-	glOrtho ( 0.0, (GLfloat) win_w, 0.0, (GLfloat) win_h, 0.0, 100 );
+	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
 	glEnable (GL_DEPTH_TEST);
-	glEnable (GL_NORMALIZE);
 	glEnable (GL_LIGHTING);
 	glEnable (GL_LIGHT0);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 	
-	GLfloat mat_specular[] = { 1.0, 7.0, 7.0, 7.0 };
-	GLfloat mat_shininess[] = { 20.0 };
-	GLfloat light_position[] = { 1.0, 0.5, 0.5, 1.0 };
+	GLfloat mat_specular [] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat mat_shininess [] = {30.0};
+	GLfloat light_position [] = {1.0, 1.0, 1.0, 0.0};
 
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
+	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
 }
 
 /* called when window is resized */
