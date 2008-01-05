@@ -69,6 +69,13 @@ void display (void)
 	/* drawing here! */
 	man_draw (&pacman);
 	
+	
+	
+	//==================== ANDREW'S TESTING CODE ======================
+	
+	
+	
+	//================ END OF ANDREW'S TESTING CODE ===================
 	glutSwapBuffers ();
 }
 
@@ -90,7 +97,7 @@ void init (void)
 	
 	GLfloat mat_ambient [] = {0.7f, 0.7f, 0.7, 1.0f};
 	GLfloat mat_specular [] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat mat_shininess [] = {20.0};
+	GLfloat mat_shininess [] = {90.0};
 	GLfloat light_position [] = {1.0, 1.0, 1.0, 0.0};
 
 	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);

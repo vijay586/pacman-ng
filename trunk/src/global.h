@@ -33,4 +33,10 @@ enum _boolean
 
 typedef enum _boolean boolean;
 
+struct _point
+{
+	int x, y, z;
+};
+typedef struct _point point;
+
 #endif
