@@ -84,13 +84,16 @@ void init (void)
 	glEnable (GL_DEPTH_TEST);
 	glEnable (GL_LIGHTING);
 	glEnable (GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_NORMALIZE);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 	
 	GLfloat mat_ambient [] = {0.7f, 0.7f, 0.7, 1.0f};
 	GLfloat mat_specular [] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat mat_shininess [] = {30.0};
+	GLfloat mat_shininess [] = {20.0};
 	GLfloat light_position [] = {1.0, 1.0, 1.0, 0.0};
 
+	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
 	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
 	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
