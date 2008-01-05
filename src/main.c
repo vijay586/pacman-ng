@@ -33,7 +33,7 @@ void keyboard (unsigned char key, int x, int y);
 void keyboard_special (int key, int x, int y);
 void display (void);
 
-man pacman = {0.0, -0.5, -2.0, 0.5, FALSE};
+man pacman = {0.0, -0.5, -2.0, 0.1, TRUE};
 
 int main (int argc, char *argv[])
 {
@@ -69,13 +69,6 @@ void display (void)
 	/* drawing here! */
 	man_draw (&pacman);
 	
-	
-	
-	//==================== ANDREW'S TESTING CODE ======================
-	
-	
-	
-	//================ END OF ANDREW'S TESTING CODE ===================
 	glutSwapBuffers ();
 }
 
@@ -91,8 +84,7 @@ void init (void)
 	glEnable (GL_DEPTH_TEST);
 	glEnable (GL_LIGHTING);
 	glEnable (GL_LIGHT0);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_NORMALIZE);
+	glEnable (GL_NORMALIZE);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 	
 	GLfloat mat_ambient [] = {0.7f, 0.7f, 0.7, 1.0f};
