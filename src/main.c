@@ -25,6 +25,7 @@
 
 #include "man.h"
 #include "global.h"
+#include "material.h"
 
 void init (void);
 void cb_exit (void);
@@ -33,9 +34,9 @@ void keyboard (unsigned char key, int x, int y);
 void keyboard_special (int key, int x, int y);
 void display (void);
 
-man pacman = {0.0, -0.5, -2.0, 0.1, TRUE};
+man pacman = {0.0, -0.5, -2.0, 0.1, FALSE};
 
-int main (int argc, char *argv[])
+int main (int argc, char *argv [])
 {
 	win_w = 800;
 	win_h = 600;
@@ -87,15 +88,7 @@ void init (void)
 	glEnable (GL_NORMALIZE);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 	
-	GLfloat mat_ambient [] = {0.7f, 0.7f, 0.7, 1.0f};
-	GLfloat mat_specular [] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat mat_shininess [] = {90.0};
-	GLfloat light_position [] = {1.0, 1.0, 1.0, 0.0};
-
-	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
-	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
-	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+	material_set (0.5, 0.5, 0.5);
 }
 
 /* called when window is resized */

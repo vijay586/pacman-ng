@@ -20,15 +20,16 @@
  * along with pacman-ng.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "man.h"
 #include <GL/glut.h>
+#include "man.h"
+#include "material.h"
 
 void man_draw (man *m)
 {
 	if (m->evil)
-		glColor3f (1.0, 0.0, 0.0);		/* FIXME: doesn't draw in red :S */
+		material_set (1.0, 0.0, 0.0);
 	else
-		glColor3f (0.5, 0.5, 0.5);
+		material_set (0.5, 0.5, 0.5);
 	
 	glPushMatrix ();
 	glTranslatef (m->x, m->y, m->z);
