@@ -34,7 +34,7 @@ void keyboard (unsigned char key, int x, int y);
 void keyboard_special (int key, int x, int y);
 void display (void);
 
-man pacman = {0.0, -0.7, -2.0, 0.05, FALSE};
+man pacman = {0.0, -0.8, -2.5, 0.05, FALSE};
 
 int main (int argc, char *argv [])
 {
@@ -70,15 +70,15 @@ void display (void)
 	/* drawing here! */
 	man_draw (&pacman);
 	
-	material_set_color (0.0, 1.0, 0.0);
 	/* draw the ground here */
-	/* glPushMatrix ();
-	glRotated (45, 1, 0, 0);
-	glTranslated (2, 2, -2.0);
-	//glScaled (5, 5, 5);
-	glutSolidCube (5);
+	material_set_color (0.0, 1.0, 0.0);
+	glPushMatrix ();
+	glTranslatef (0.0, -1.8, -9.5);
+	glScalef (2.0, 1.0, 5.0);
+	glRotatef (20.0, 1.0, 0.0, 0.0);
+	glutSolidCube (2);
 	glPopMatrix ();
-*/
+
 	glutSwapBuffers ();
 }
 
