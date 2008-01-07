@@ -29,7 +29,7 @@ void man_draw (man *m)
 	if (m->evil)
 		material_set_color (1.0, 0.0, 0.0);
 	else
-		material_set_color (0.5, 0.5, 0.5);
+		material_set_color (1.0, 1.0, 0.0);
 	
 	glPushMatrix ();
 	glTranslatef (m->x, m->y, m->z);
