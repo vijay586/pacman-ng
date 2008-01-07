@@ -76,18 +76,15 @@ void display (void)
 /* initialize opengl */
 void init (void)
 {
+	glEnable (GL_DEPTH_TEST);
+	glEnable (GL_LIGHTING);
+	glEnable (GL_LIGHT0);
 	glClearColor (0.0, 0.0, 0.0, 0.0);
-	glShadeModel (GL_SMOOTH);
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
-	glEnable (GL_DEPTH_TEST);
-	glEnable (GL_LIGHTING);
-	glEnable (GL_LIGHT0);
-	glEnable (GL_NORMALIZE);
-	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-	
+			
 	material_set_color (0.5, 0.5, 0.5);
 }
 
@@ -96,7 +93,6 @@ void resize (int width, int height)
 {
 	win_w = width;
 	win_h = height;
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
