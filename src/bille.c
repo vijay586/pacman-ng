@@ -26,10 +26,11 @@
 
 void bille_draw (bille *b)
 {
-	material_set_color (1.0, 1.0, 0.0);
-	
 	glPushMatrix ();
-	glTranslatef (b->x, b->y, b->z);
+	material_set_color (0.0, 1.0, 1.0);
+	
+	
+	glTranslatef (b->x, b->y + b->radius, b->z);
 	glutSolidSphere (b->radius, 100, 100);
 	glPopMatrix ();
 }

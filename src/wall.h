@@ -14,14 +14,14 @@ struct _wall
 {
 	point pos;
 	orientation orient;
-	int length;
+	float length;
 };
 typedef struct _wall wall;
 
 
 
 
-#define WALL_THICKNESS 1
+#define WALL_THICKNESS 0.3
 #define WALL_HEIGHT 1
 
 void wall_draw ( wall *w );

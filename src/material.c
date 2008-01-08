@@ -29,10 +29,8 @@ void material_set_color (float r, float g, float b)
 	GLfloat mat_ambient [] = {r, g, b, 1.0};
 	GLfloat mat_specular [] = {r, g, b, 1.0};
 	GLfloat mat_shininess [] = {90.0};
-	GLfloat light_position [] = {1.0, 1.0, 1.0, 0.0};
-
+	
 	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
 	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
-	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
 }

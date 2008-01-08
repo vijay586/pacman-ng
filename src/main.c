@@ -36,9 +36,9 @@ void keyboard (unsigned char key, int x, int y);
 void keyboard_special (int key, int x, int y);
 void display (void);
 
-man pacman = {0.0, -0.8, -2.5, 0.05, FALSE};
-man man2 = {0.0, -0.8, -4.5, 0.05, TRUE};
-bille billes = {0.5, -0.8, -2.5, 0.02};
+man pacman = {0.0, 0.1, 1.5, 0.1, FALSE};
+man man2 = {0.0, 0.1, -1.0, 0.1, TRUE};
+bille billes = {0.5, 0.1, -2.5, 0.05};
 
 int main (int argc, char *argv [])
 {
@@ -70,7 +70,13 @@ void display (void)
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity (); 
+	gluLookAt ( pacman.x, pacman.y + 4.0, pacman.z + 4.0, pacman.x, pacman.y, pacman.z, 0.0, 1.0, 0.0 );
 	
+	GLfloat light_position [] = { 0.0, 2.0, 9.0, 1.0};
+	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+	
+	GLfloat light_intensity[]={ 1.0, 1.0, 1.0, 0.0 };
+	glLightfv(GL_LIGHT0,GL_DIFFUSE,light_intensity);
 	/* drawing here! */
 	man_draw (&pacman);
 	man_draw (&man2);
@@ -82,20 +88,28 @@ void display (void)
 	
 	point pos1;
 	pos1.x = 0;
-	pos1.y = 0.5;
-	pos1.z = -2;
-	wall w1 = { pos1, HORIZONTAL, 3 };
+	pos1.y = 0;
+	pos1.z = 0;
+	wall w1 = { pos1, HORIZONTAL, 4 };
 	wall_draw ( &w1 );
+	
+	point pos2;
+	pos2.x = 0;
+	pos2.y = 0;
+	pos2.z = 0;
+	wall w2 = { pos2, VERTICAL, 2 };
+	wall_draw ( &w2 );
 	
 	
 	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
 	
-	material_set_color (0.0, 1.0, 0.0);
+	
 	glPushMatrix ();
-	glTranslatef (0.0, -1.8, -9.5);
-	glScalef (2.0, 1.0, 5.0);
-	glRotatef (20.0, 1.0, 0.0, 0.0);
-	glutSolidCube (2);
+	material_set_color (0.0, 1.0, 0.0);
+	glTranslatef (0.0, -0.5, 0.0);
+	glScalef (5.0, 0.5, 10.0);
+	//glRotatef (20.0, 1.0, 0.0, 0.0);		//DONOT un-comment
+	glutSolidCube (1);
 	glPopMatrix ();
 	
 	glutSwapBuffers ();
@@ -111,9 +125,10 @@ void init (void)
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
-	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
-			
-	material_set_color (0.5, 0.5, 0.5);
+	//gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
+	gluPerspective ( 45.0, 1, 1.0f, 1000.0f);
+	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
+	//material_set_color (0.5, 0.5, 0.5);
 }
 
 /* called when window is resized */
@@ -134,6 +149,24 @@ void keyboard (unsigned char key, int x, int y)
 
 void keyboard_special (int key, int x, int y)
 {
+	if ( key == GLUT_KEY_UP )
+	{
+		pacman.z -= 0.2;
+		
+	}
+	else if ( key == GLUT_KEY_DOWN )
+	{
+		pacman.z += 0.2;
+	}
+	else if ( key == GLUT_KEY_LEFT )
+	{
+		pacman.x -= 0.2;
+	}
+	else if ( key == GLUT_KEY_RIGHT )
+	{
+		pacman.x += 0.2;
+	}
+	glutPostRedisplay ();
 }
 
 void cb_exit (void)
