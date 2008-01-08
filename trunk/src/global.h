@@ -35,7 +35,7 @@ typedef enum _boolean boolean;
 
 struct _point
 {
-	int x, y, z;
+	float x, y, z;
 };
 typedef struct _point point;
 
