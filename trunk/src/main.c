@@ -27,6 +27,7 @@
 #include "global.h"
 #include "material.h"
 #include "wall.h"
+#include "bille.h"
 
 void init (void);
 void cb_exit (void);
@@ -36,6 +37,7 @@ void keyboard_special (int key, int x, int y);
 void display (void);
 
 man pacman = {0.0, -0.8, -2.5, 0.05, FALSE};
+bille billes = {0.5, -0.8, -2.5, 0.02};
 
 int main (int argc, char *argv [])
 {
@@ -69,7 +71,9 @@ void display (void)
 	glLoadIdentity (); 
 	
 	/* drawing here! */
-	//man_draw (&pacman);
+	man_draw (&pacman);
+	
+	bille_draw(&billes);
 	
 	/* draw the ground here */
 	
@@ -82,8 +86,9 @@ void display (void)
 	wall w1 = { pos1, HORIZONTAL, 3 };
 	wall_draw ( &w1 );
 	
+	
 	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
-	/*
+	
 	material_set_color (0.0, 1.0, 0.0);
 	glPushMatrix ();
 	glTranslatef (0.0, -1.8, -9.5);
@@ -91,7 +96,7 @@ void display (void)
 	glRotatef (20.0, 1.0, 0.0, 0.0);
 	glutSolidCube (2);
 	glPopMatrix ();
-	*/
+	
 	glutSwapBuffers ();
 }
 
