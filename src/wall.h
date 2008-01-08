@@ -12,7 +12,7 @@ typedef enum _orientation orientation;
 
 struct _wall
 {
-	point start;
+	point pos;
 	orientation orient;
 	int length;
 };
@@ -22,6 +22,7 @@ typedef struct _wall wall;
 
 
 #define WALL_THICKNESS 1
+#define WALL_HEIGHT 1
 
 void wall_draw ( wall *w );
 

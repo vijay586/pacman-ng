@@ -26,6 +26,7 @@
 #include "man.h"
 #include "global.h"
 #include "material.h"
+#include "wall.h"
 
 void init (void);
 void cb_exit (void);
@@ -65,12 +66,24 @@ void display (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity ();
+	glLoadIdentity (); 
 	
 	/* drawing here! */
-	man_draw (&pacman);
+	//man_draw (&pacman);
 	
 	/* draw the ground here */
+	
+	//============= ANDREW'S TESTING CODE DON'T REMOVE ================
+	
+	point pos1;
+	pos1.x = 0;
+	pos1.y = 0.5;
+	pos1.z = -2;
+	wall w1 = { pos1, HORIZONTAL, 3 };
+	wall_draw ( &w1 );
+	
+	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
+	/*
 	material_set_color (0.0, 1.0, 0.0);
 	glPushMatrix ();
 	glTranslatef (0.0, -1.8, -9.5);
@@ -78,7 +91,7 @@ void display (void)
 	glRotatef (20.0, 1.0, 0.0, 0.0);
 	glutSolidCube (2);
 	glPopMatrix ();
-
+	*/
 	glutSwapBuffers ();
 }
 
