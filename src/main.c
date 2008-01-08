@@ -37,6 +37,7 @@ void keyboard_special (int key, int x, int y);
 void display (void);
 
 man pacman = {0.0, -0.8, -2.5, 0.05, FALSE};
+man man2 = {0.0, -0.8, -4.5, 0.05, TRUE};
 bille billes = {0.5, -0.8, -2.5, 0.02};
 
 int main (int argc, char *argv [])
@@ -72,7 +73,7 @@ void display (void)
 	
 	/* drawing here! */
 	man_draw (&pacman);
-	
+	man_draw (&man2);
 	bille_draw(&billes);
 	
 	/* draw the ground here */
