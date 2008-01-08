@@ -26,7 +26,7 @@
 
 void bille_draw (bille *b)
 {
-	material_set_color (1.0, 0.5, 0.0);
+	material_set_color (1.0, 1.0, 0.0);
 	
 	glPushMatrix ();
 	glTranslatef (b->x, b->y, b->z);
