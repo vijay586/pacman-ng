@@ -38,9 +38,19 @@ void display (void);
 
 man pacman = {0.0, 0.1, 1.5, 0.1, FALSE};
 man man2 = {0.0, 0.1, -1.0, 0.1, TRUE};
-point p = {0.5, 0.1, -2.5};
+point p = {0.0, 0.1, -2.5};
 bille billes;
 int animation_running;
+
+void set_bille_visibility (void)
+{
+	if(billes.points.z <= pacman.z + pacman.radius && 
+		billes.points.z >= pacman.z - pacman.radius && 
+		billes.points.x >= pacman.x - pacman.radius &&
+		billes.points.x <= pacman.x + pacman.radius)
+		billes.visible=FALSE;
+}
+
 int main (int argc, char *argv [])
 {
 	win_w = 800;
@@ -119,7 +129,8 @@ void display (void)
 
 void animate ( int val )
 {
-	man_move ( &pacman, 0, 0, 0.05 );
+	man_move ( &pacman, 0, 0, -0.05 );
+	set_bille_visibility();
 	if ( animation_running )
 	glutTimerFunc ( 5, animate, 1 );
 }
@@ -168,20 +179,20 @@ void keyboard_special (int key, int x, int y)
 {
 	if ( key == GLUT_KEY_UP )
 	{
-		pacman.z -= 0.2;
+		pacman.z -= 0.05;
 		
 	}
 	else if ( key == GLUT_KEY_DOWN )
 	{
-		pacman.z += 0.2;
+		pacman.z += 0.05;
 	}
 	else if ( key == GLUT_KEY_LEFT )
 	{
-		pacman.x -= 0.2;
+		pacman.x -= 0.05;
 	}
 	else if ( key == GLUT_KEY_RIGHT )
 	{
-		pacman.x += 0.2;
+		pacman.x += 0.05;
 	}
 	glutPostRedisplay ();
 }
