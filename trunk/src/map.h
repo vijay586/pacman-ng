@@ -8,11 +8,11 @@
 
 struct _map
 {
-	int squares[MAP_WIDTH][MAP_HEIGHT];
+	int **squares;//[MAP_WIDTH][MAP_HEIGHT];
 };
 typedef struct _map map;
 
-
+map *map_new ( int **sq );
 int map_cell_empty ( map* m, int posx, int posz );
 
 #endif
