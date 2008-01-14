@@ -34,6 +34,6 @@ struct _bille
 
 typedef struct _bille bille;
 
-void bille_draw (bille *b);
+inline void bille_draw (bille *b);
 
 #endif
