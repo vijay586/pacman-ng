@@ -38,7 +38,8 @@ void display (void);
 
 man pacman = {0.0, 0.1, 1.5, 0.1, FALSE};
 man man2 = {0.0, 0.1, -1.0, 0.1, TRUE};
-bille billes = {0.5, 0.1, -2.5, 0.05};
+point p = {0.5, 0.1, -2.5};
+bille billes;
 int animation_running;
 int main (int argc, char *argv [])
 {
@@ -137,6 +138,11 @@ void init (void)
 	gluPerspective ( 45.0, 1, 1.0f, 1000.0f);
 	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
 	//material_set_color (0.5, 0.5, 0.5);
+	
+	billes.points = p;
+	billes.radius = 0.05;
+	billes.visible = TRUE;
+
 	animation_running = 1;
 	animate ( 1 );
 }

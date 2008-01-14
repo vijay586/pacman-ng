@@ -27,8 +27,9 @@
 
 struct _bille
 {
-	float x, y, z;
+	point points;
 	float radius;
+	boolean visible;
 };
 
 typedef struct _bille bille;
