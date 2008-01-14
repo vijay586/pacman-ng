@@ -1,5 +1,5 @@
 all:
-	g++ src/*.cpp -o pacman -ggdb -lglut;
+	g++ src/main.cpp -o pacman -ggdb -lglut;
 
 clean:
 	rm -rf pacman;

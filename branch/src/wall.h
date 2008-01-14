@@ -3,6 +3,9 @@
 
 #include "global.h"
 
+#define WALL_THICKNESS 0.3;
+#define WALL_HEIGHT 1.0;
+
 class wall {
 	public:
 		enum orientation { VERTICAL = 0, HORIZONTAL = 1 };
@@ -14,10 +17,6 @@ class wall {
 		wall ();
 		wall (point p, orientation o, float l);
 		void draw ();
-	
-	private:
-		float thickness;
-		float height;
 };
 
 #endif
