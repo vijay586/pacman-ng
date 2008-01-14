@@ -35,5 +35,6 @@ struct _man
 typedef struct _man man;
 
 void man_draw (man *m);
+void man_move ( man *m, float x_, float y_, float z_ );
 
 #endif

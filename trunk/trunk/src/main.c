@@ -39,7 +39,7 @@ void display (void);
 man pacman = {0.0, 0.1, 1.5, 0.1, FALSE};
 man man2 = {0.0, 0.1, -1.0, 0.1, TRUE};
 bille billes = {0.5, 0.1, -2.5, 0.05};
-
+int animation_running;
 int main (int argc, char *argv [])
 {
 	win_w = 800;
@@ -77,6 +77,7 @@ void display (void)
 	
 	GLfloat light_intensity[]={ 1.0, 1.0, 1.0, 0.0 };
 	glLightfv(GL_LIGHT0,GL_DIFFUSE,light_intensity);
+	
 	/* drawing here! */
 	man_draw (&pacman);
 	man_draw (&man2);
@@ -115,6 +116,13 @@ void display (void)
 	glutSwapBuffers ();
 }
 
+void animate ( int val )
+{
+	man_move ( &pacman, 0, 0, 0.05 );
+	if ( animation_running )
+	glutTimerFunc ( 5, animate, 1 );
+}
+
 /* initialize opengl */
 void init (void)
 {
@@ -129,7 +137,10 @@ void init (void)
 	gluPerspective ( 45.0, 1, 1.0f, 1000.0f);
 	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
 	//material_set_color (0.5, 0.5, 0.5);
+	animation_running = 1;
+	animate ( 1 );
 }
+
 
 /* called when window is resized */
 void resize (int width, int height)
