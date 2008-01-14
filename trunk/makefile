@@ -1,5 +1,5 @@
 all:
-	gcc src/* -o pacman -std=c99 -ggdb -lglut;
+	gcc src/* -o pacman -std=c99 -ggdb -lglut -fgnu89-inline;
 
 clean:
 	rm -rf pacman;
