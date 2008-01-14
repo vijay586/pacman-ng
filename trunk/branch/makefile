@@ -1,5 +1,5 @@
 all:
-	gcc src/* -o pacman -std=c99 -ggdb -lglut;
+	g++ src/*.cpp -o pacman -ggdb -lglut;
 
 clean:
 	rm -rf pacman;

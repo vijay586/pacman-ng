@@ -25,18 +25,13 @@
 
 int win_w, win_h;
 
-enum _boolean
-{
-	FALSE = 0,
-	TRUE = 1
+class point {
+	public:
+		float x, y, z;
+		
+		point () {	setPoints (0.0, 0.0, 0.0); }
+		point (float X, float Y, float Z) { setPoints (x, y, z); }
+		void setPoints (float X, float Y, float Z) { x = X; y = Y, z = Z; }
 };
-
-typedef enum _boolean boolean;
-
-struct _point
-{
-	float x, y, z;
-};
-typedef struct _point point;
 
 #endif
