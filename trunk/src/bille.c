@@ -24,13 +24,15 @@
 #include "bille.h"
 #include "material.h"
 
-void bille_draw (bille *b)
+inline void bille_draw (bille *b)
 {
+	if (!b->visible)
+		return;
 	glPushMatrix ();
 	material_set_color (0.0, 1.0, 1.0);
 	
 	
-	glTranslatef (b->x, b->y + b->radius, b->z);
+	glTranslatef (b->points.x, b->points.y + b->radius, b->points.z);
 	glutSolidSphere (b->radius, 100, 100);
 	glPopMatrix ();
 }
