@@ -29,7 +29,7 @@ struct _man
 {
 	float x, y, z;
 	float radius;
-	boolean evil;
+	bool evil;
 };
 
 typedef struct _man man;

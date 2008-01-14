@@ -3,27 +3,21 @@
 
 #include "global.h"
 
-enum _orientation
-{
-	VERTICAL = 0,
-	HORIZONTAL = 1
+class wall {
+	public:
+		enum orientation { VERTICAL = 0, HORIZONTAL = 1 };
+
+		point pos;
+		orientation orient;
+		float length;
+		
+		wall ();
+		wall (point p, orientation o, float l);
+		void draw ();
+	
+	private:
+		float thickness;
+		float height;
 };
-typedef enum _orientation orientation;
-
-struct _wall
-{
-	point pos;
-	orientation orient;
-	float length;
-};
-typedef struct _wall wall;
-
-
-
-
-#define WALL_THICKNESS 0.3
-#define WALL_HEIGHT 1
-
-void wall_draw ( wall *w );
 
 #endif
