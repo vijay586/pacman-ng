@@ -27,14 +27,15 @@
 
 struct _man
 {
-	float x, y, z;
+	point pos;
 	float radius;
 	boolean evil;
+	short velocity [3];
 };
 
 typedef struct _man man;
 
 void man_draw (man *m);
-void man_move ( man *m, float x_, float y_, float z_ );
+void man_move (man *m);
 
 #endif

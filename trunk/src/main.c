@@ -36,19 +36,17 @@ void keyboard (unsigned char key, int x, int y);
 void keyboard_special (int key, int x, int y);
 void display (void);
 
-man pacman = {0.0, 0.1, 1.5, 0.1, FALSE};
-man man2 = {0.0, 0.1, -1.0, 0.1, TRUE};
-point p = {0.0, 0.1, -2.5};
+man pacman, man2;
 bille billes;
 int animation_running;
 
 void set_bille_visibility (void)
 {
-	if(billes.points.z <= pacman.z + pacman.radius && 
-		billes.points.z >= pacman.z - pacman.radius && 
-		billes.points.x >= pacman.x - pacman.radius &&
-		billes.points.x <= pacman.x + pacman.radius)
-		billes.visible=FALSE;
+	if(	billes.points.z <= pacman.pos.z + pacman.radius && 
+		billes.points.z >= pacman.pos.z - pacman.radius && 
+		billes.points.x >= pacman.pos.x - pacman.radius &&
+		billes.points.x <= pacman.pos.x + pacman.radius	)
+			billes.visible = FALSE;
 }
 
 int main (int argc, char *argv [])
@@ -81,20 +79,20 @@ void display (void)
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity (); 
-	gluLookAt ( pacman.x, pacman.y + 4.0, pacman.z + 4.0, pacman.x, pacman.y, pacman.z, 0.0, 1.0, 0.0 );
+	gluLookAt (pacman.pos.x, pacman.pos.y + 4.0, pacman.pos.z + 4.0, 
+				pacman.pos.x, pacman.pos.y, pacman.pos.z, 
+				0.0, 1.0, 0.0 );
 	
-	GLfloat light_position [] = { 0.0, 2.0, 9.0, 1.0};
+	GLfloat light_position [] = {0.0, 2.0, 9.0, 1.0};
 	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
 	
-	GLfloat light_intensity[]={ 1.0, 1.0, 1.0, 0.0 };
-	glLightfv(GL_LIGHT0,GL_DIFFUSE,light_intensity);
+	GLfloat light_intensity [] = {1.0, 1.0, 1.0, 0.0 };
+	glLightfv (GL_LIGHT0,GL_DIFFUSE,light_intensity);
 	
 	/* drawing here! */
 	man_draw (&pacman);
 	man_draw (&man2);
 	bille_draw(&billes);
-	
-	/* draw the ground here */
 	
 	//============= ANDREW'S TESTING CODE DON'T REMOVE ================
 	
@@ -112,9 +110,7 @@ void display (void)
 	wall w2 = { pos2, VERTICAL, 2 };
 	wall_draw ( &w2 );
 	
-	
 	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
-	
 	
 	glPushMatrix ();
 	material_set_color (0.0, 1.0, 0.0);
@@ -129,10 +125,10 @@ void display (void)
 
 void animate ( int val )
 {
-	man_move ( &pacman, 0, 0, -0.05 );
+	man_move (&pacman);
 	set_bille_visibility();
 	if ( animation_running )
-	glutTimerFunc ( 5, animate, 1 );
+		glutTimerFunc ( 5, animate, 1 );
 }
 
 /* initialize opengl */
@@ -150,7 +146,27 @@ void init (void)
 	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
 	//material_set_color (0.5, 0.5, 0.5);
 	
-	billes.points = p;
+	pacman.pos.x = 0.0;
+	pacman.pos.y = 0.1;
+	pacman.pos.z = 1.5;
+	pacman.radius = 0.1;
+	pacman.evil = FALSE;
+	pacman.velocity [0] = 0;
+	pacman.velocity [1] = 0;
+	pacman.velocity [2] = 0;
+
+	man2.pos.x = 0.0;
+	man2.pos.y = 0.1;
+	man2.pos.z = -1.0;
+	man2.radius = 0.1;
+	man2.evil = TRUE;
+	man2.velocity [0] = 0;
+	man2.velocity [1] = 0;
+	man2.velocity [2] = 0;
+	
+	billes.points.x = 0.0;
+	billes.points.y = 0.1;
+	billes.points.z = -2.5;
 	billes.radius = 0.05;
 	billes.visible = TRUE;
 
@@ -179,22 +195,29 @@ void keyboard_special (int key, int x, int y)
 {
 	if ( key == GLUT_KEY_UP )
 	{
-		pacman.z -= 0.05;
-		
+		// pacman.z -= 0.05;
+		pacman.velocity [0] = 0;
+		pacman.velocity [2] = -1;
 	}
 	else if ( key == GLUT_KEY_DOWN )
 	{
-		pacman.z += 0.05;
+		// pacman.z += 0.05;
+		pacman.velocity [0] = 0;
+		pacman.velocity [2] = 1;
 	}
 	else if ( key == GLUT_KEY_LEFT )
 	{
-		pacman.x -= 0.05;
+		// pacman.x -= 0.05;
+		pacman.velocity [0] = -1;
+		pacman.velocity [2] = 0;
 	}
 	else if ( key == GLUT_KEY_RIGHT )
 	{
-		pacman.x += 0.05;
+		// pacman.x += 0.05;
+		pacman.velocity [0] = 1;
+		pacman.velocity [2] = 0;
 	}
-	glutPostRedisplay ();
+	// glutPostRedisplay ();
 }
 
 void cb_exit (void)
