@@ -33,14 +33,14 @@ void man_draw (man *m)
 		material_set_color (1.0, 1.0, 0.0);
 	
 	
-	glTranslatef (m->x, m->y, m->z);
+	glTranslatef (m->pos.x, m->pos.y, m->pos.z);
 	glutSolidSphere (m->radius, 100, 100);
 	glPopMatrix ();
 }
 
-void man_move ( man *m, float x_, float y_, float z_ )
+void man_move (man *m)
 {
-	m->x+=x_;
-	m->y+=y_;
-	m->z+=z_;
+	m->pos.x += m->velocity [0] * 0.05;;
+	m->pos.y += m->velocity [1] * 0.05;;
+	m->pos.z += m->velocity [2] * 0.05;;
 }
