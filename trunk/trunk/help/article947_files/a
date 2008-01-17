@@ -1,5 +1,0 @@
-document.write('<ifr' +'ame src="http://www.gamedev.net/banman/banman.asp?ZoneID=27&Task=Get&PageID=98649" width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no">');document.write('</ifr' + 'ame>');document.write('<img s'+'rc="http://te.burstnet.com/tte/blank.gif?cid=19547&cat=573&country=EG" width="0" height="0" align="right">');
-document.write('<SCR' + 'IPT LANGUAGE="JavaScript">var tcdacmd="dt";var ANBCH="573";'); 
-document.write('</SCR' + 'IPT>');
-document.write('<SCR' + 'IPT SRC="http://an.tacoda.net/an/12030/slf.js" LANGUAGE="JavaScript">');
-document.write('</SCR' + 'IPT>');

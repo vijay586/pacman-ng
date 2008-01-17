@@ -1,5 +1,0 @@
-
-
-spitHere();
-itxtDSS('');
-
