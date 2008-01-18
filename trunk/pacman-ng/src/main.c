@@ -76,7 +76,7 @@ int main (int argc, char *argv [])
 /* the display callback */
 void display (void)
 {
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity (); 
 	gluLookAt (pacman.pos.x, pacman.pos.y + 4.0, pacman.pos.z + 4.0, 
@@ -134,7 +134,10 @@ void animate ( int val )
 /* initialize opengl */
 void init (void)
 {
+	// glDisable (GL_DITHER);
 	glEnable (GL_DEPTH_TEST);
+	glDisable (GL_NORMALIZE);
+	glDepthFunc (GL_LESS);
 	glEnable (GL_LIGHTING);
 	glEnable (GL_LIGHT0);
 	glClearColor (0.0, 0.0, 0.0, 0.0);
@@ -142,7 +145,7 @@ void init (void)
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 	//gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
-	gluPerspective ( 45.0, 1, 1.0f, win_h);
+	gluPerspective ( 45.0, 1, 1.0f, 20.0f);
 	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
 	//material_set_color (0.5, 0.5, 0.5);
 	
@@ -183,7 +186,7 @@ void resize (int width, int height)
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
-	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, win_h);
+	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 20.0f);
 	glutPostRedisplay ();
 }
 
