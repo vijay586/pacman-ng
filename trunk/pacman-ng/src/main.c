@@ -142,7 +142,7 @@ void init (void)
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 	//gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
-	gluPerspective ( 45.0, 1, 1.0f, 1000.0f);
+	gluPerspective ( 45.0, 1, 1.0f, win_h);
 	//gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
 	//material_set_color (0.5, 0.5, 0.5);
 	
@@ -183,7 +183,7 @@ void resize (int width, int height)
 	glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
-	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
+	gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, win_h);
 	glutPostRedisplay ();
 }
 
