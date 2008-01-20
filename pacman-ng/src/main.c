@@ -38,7 +38,10 @@ void display (void);
 
 man pacman, man2;
 bille billes;
+wall w1, w2;
 int animation_running;
+GLfloat light_intensity [] = {1.0, 1.0, 1.0, 0.0 };
+GLfloat light_position [] = {0.0, 2.0, 9.0, 1.0};
 
 void set_bille_visibility (void)
 {
@@ -83,34 +86,13 @@ void display (void)
 				pacman.pos.x, pacman.pos.y, pacman.pos.z, 
 				0.0, 1.0, 0.0 );
 	
-	GLfloat light_position [] = {0.0, 2.0, 9.0, 1.0};
-	glLightfv (GL_LIGHT0, GL_POSITION, light_position);
-	
-	GLfloat light_intensity [] = {1.0, 1.0, 1.0, 0.0 };
-	glLightfv (GL_LIGHT0,GL_DIFFUSE,light_intensity);
+	glLightfv (GL_LIGHT0, GL_POSITION, light_position);	
+	glLightfv (GL_LIGHT0, GL_DIFFUSE, light_intensity);
 	
 	/* drawing here! */
 	man_draw (&pacman);
 	man_draw (&man2);
 	bille_draw(&billes);
-	
-	//============= ANDREW'S TESTING CODE DON'T REMOVE ================
-	
-	point pos1;
-	pos1.x = 0;
-	pos1.y = 0;
-	pos1.z = 0;
-	wall w1 = { pos1, HORIZONTAL, 4 };
-	wall_draw ( &w1 );
-	
-	point pos2;
-	pos2.x = 0;
-	pos2.y = 0;
-	pos2.z = 0;
-	wall w2 = { pos2, VERTICAL, 2 };
-	wall_draw ( &w2 );
-	
-	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
 	
 	glPushMatrix ();
 	material_set_color (0.0, 1.0, 0.0);
@@ -119,6 +101,9 @@ void display (void)
 	//glRotatef (20.0, 1.0, 0.0, 0.0);		//DONOT un-comment
 	glutSolidCube (1);
 	glPopMatrix ();
+	
+	wall_draw (&w1);
+	wall_draw (&w2);
 	
 	glutSwapBuffers ();
 }
@@ -141,7 +126,7 @@ void init (void)
 	glEnable (GL_LIGHTING);
 	glEnable (GL_LIGHT0);
 	glClearColor (0.0, 0.0, 0.0, 0.0);
-	glViewport (0, 0, win_w, win_h);
+	//glViewport (0, 0, win_w, win_h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 	//gluPerspective (45.0f, (GLfloat) win_w / (GLfloat) win_h, 1.0f, 1000.0f);
@@ -173,6 +158,22 @@ void init (void)
 	billes.radius = 0.05;
 	billes.visible = TRUE;
 
+	//============= ANDREW'S TESTING CODE DON'T REMOVE ================
+	
+	w1.pos.x = 0;
+	w1.pos.y = 0;
+	w1.pos.z = 0;
+	w1.orient = HORIZONTAL;
+	w1.length = 4;
+	
+	w2.pos.x = 0;
+	w2.pos.y = 0;
+	w2.pos.z = 0;
+	w2.orient = VERTICAL;
+	w2.length = 2;
+	
+	//========== END OF ANDREW'S TESTING CODE DON'T REMOVE ============
+	
 	animation_running = 1;
 	animate ( 1 );
 }
