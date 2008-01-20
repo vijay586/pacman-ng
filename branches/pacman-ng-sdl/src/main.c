@@ -20,6 +20,8 @@
  * along with pacman-ng.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* this is the sdl branch */
+
 #include <stdlib.h>
 #include <GL/glut.h>
 
