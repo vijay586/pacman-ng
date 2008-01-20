@@ -24,6 +24,7 @@
 #include "bille.h"
 #include "material.h"
 
+/*
 inline void bille_draw (bille *b)
 {
 	if (!b->visible)
@@ -34,3 +35,4 @@ inline void bille_draw (bille *b)
 	glutSolidSphere (b->radius, 100, 100);
 	glPopMatrix ();
 }
+*/

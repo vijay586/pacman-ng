@@ -23,8 +23,6 @@
 #ifndef __GLOBAL
 #define __GLOBAL
 
-int win_w, win_h;
-
 enum _boolean
 {
 	FALSE = 0,
