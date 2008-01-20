@@ -31,17 +31,32 @@
 <option id="gnu.c.compiler.option.optimization.flags.68707155" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" value="-Os -march=prescott" valueType="string"/>
 <option id="gnu.c.compiler.option.include.paths.1863823332" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="/usr/include"/>
+<listOptionValue builtIn="false" value="/usr/include/cairo"/>
+<listOptionValue builtIn="false" value="/usr/include/freetype2"/>
+<listOptionValue builtIn="false" value="/usr/include/libpng12"/>
+<listOptionValue builtIn="false" value="/usr/include/SDL"/>
 </option>
 <option id="gnu.c.compiler.option.warnings.toerrors.1530453028" name="Warnings as errors (-Werror)" superClass="gnu.c.compiler.option.warnings.toerrors" value="true" valueType="boolean"/>
+<option id="gnu.c.compiler.option.misc.ansi.1695238296" name="Support ANSI programs (-ansi)" superClass="gnu.c.compiler.option.misc.ansi" value="false" valueType="boolean"/>
+<option id="gnu.c.compiler.option.preprocessor.def.symbols.1775739549" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+<listOptionValue builtIn="false" value="_GNU_SOURCE=1"/>
+<listOptionValue builtIn="false" value="_REENTRANT"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1819865098" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1773805207" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug">
 <option id="gnu.c.link.option.paths.401379223" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 <listOptionValue builtIn="false" value="/usr/include"/>
+<listOptionValue builtIn="false" value="/usr/lib -Wl,-rpath,/usr/lib"/>
 <listOptionValue builtIn="false" value="/usr/include/GL"/>
 </option>
 <option id="gnu.c.link.option.libs.200179519" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="glut"/>
+<listOptionValue builtIn="false" value="cairo"/>
+<listOptionValue builtIn="false" value="SDL"/>
+<listOptionValue builtIn="false" value="pthread"/>
+<listOptionValue builtIn="false" value="gl"/>
+<listOptionValue builtIn="false" value="glu"/>
 </option>
 <option id="gnu.c.link.option.noshared.1468074336" name="No shared libraries (-static)" superClass="gnu.c.link.option.noshared" value="false" valueType="boolean"/>
 <inputType id="cdt.managedbuild.tool.gnu.c.linker.input.2144004677" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
@@ -64,6 +79,7 @@
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+
 
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
@@ -280,6 +296,7 @@
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+
 
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>

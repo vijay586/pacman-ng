@@ -25,15 +25,15 @@
 
 #include "global.h"
 
-struct _bille
+struct
 {
 	point points;
 	float radius;
 	boolean visible;
-};
+} bille;
 
-typedef struct _bille bille;
-
+// typedef struct _bille bille;
+/*
 inline void bille_draw (bille *b);
-
+*/
 #endif
