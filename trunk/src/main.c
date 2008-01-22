@@ -3,6 +3,7 @@
 #include "glut-extra.h"
 #include "opengl-render.h"
 #include "ground.h"
+#include "wall.h"
 
 #define WIN_W 800
 #define WIN_H 600
@@ -26,10 +27,23 @@ int main (int argc, char *argv [])
 	return 0;
 }
 
+void andrewsTest ()
+{
+	wall *w = wall_new (0.0, 2.0, 2.0, VERTICAL, 10);
+	wall_draw (w);
+}
+
 void cbDisplay ()
 {
 	renderOpenGL ();
 	renderGround (&mainGround);
+	
+	/*==================== ANDREW'S TESTING CODE ====================*/
+	/* Comment My Testing Function to Disable the testing            */
+	
+	andrewsTest();
+	
+	/*================= END OF ANDREW'S TESTING CODE ================*/
 	
 	glutSwapBuffers ();
 }
