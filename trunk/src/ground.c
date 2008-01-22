@@ -13,7 +13,7 @@ void renderGround (ground *g)
 	glPopMatrix ();
 }
 
-ground *newGround (float fW, fH, fD)
+ground *newGround (float fW, float fH, float fD)
 {
 	ground *temp = calloc (1, sizeof (ground));
 	temp->fWidth = fW;
