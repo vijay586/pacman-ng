@@ -7,7 +7,6 @@
 #define WALL_COLOR_G 0.5
 #define WALL_COLOR_B 0.0
 
-
 enum _orientation
 {
 	VERTICAL = 0,
