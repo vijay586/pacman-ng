@@ -2,6 +2,7 @@
 
 #include <GL/freeglut.h>
 #include <stdlib.h>
+#include <cairo.h>
 
 inline void renderGround (ground *g)
 {
@@ -15,6 +16,9 @@ inline void renderGround (ground *g)
 
 ground *newGround (float fw, float fh, float fd)
 {
+//	cairo_surface_t *pCairoSurface = NULL;
+//	cairo_t *pCairoContext;
+
 	ground *temp = calloc (1, sizeof (ground));
 	temp->fWidth = fw;
 	temp->fHeight = fh;
