@@ -16,6 +16,7 @@ void initOpenGL (float fWidth, float fHeight)
 	glDisable (GL_DITHER);
 	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
+	glEnable (GL_TEXTURE_2D);
 	glEnable (GL_TEXTURE_RECTANGLE_ARB);
 	glEnable (GL_LIGHTING);
 	//glEnable (GL_LIGHT0);

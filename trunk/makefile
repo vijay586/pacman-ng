@@ -1,8 +1,8 @@
-SRC = main.c opengl-render.c ground.c glut-extra.c wall.c bille.c man.c
+SRC = main.c opengl-render.c ground.c glut-extra.c wall.c bille.c man.c map.c
 OUTPUT = pacman
 
 all:
-	cd src && gcc -o ../$(OUTPUT) $(SRC) -g3 -Wall -Werror `pkg-config --libs --cflags cairo` -lglut
+	cd src && gcc -o ../$(OUTPUT) $(SRC) -g3 -Wall -Werror -lglut
 
 clean:
 	rm -rf $(OUTPUT)
