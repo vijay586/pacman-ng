@@ -3,6 +3,7 @@
 #include "glut-extra.h"
 #include "opengl-render.h"
 #include "ground.h"
+#include "bille.h"
 #include "wall.h"
 
 #define WIN_W 800
@@ -27,6 +28,12 @@ int main (int argc, char *argv [])
 	return 0;
 }
 
+void marlyBille ()
+{
+	bille *bille1 = newBille(0.05, 0.0, 0.0, 0.0, 1);
+	bille_draw(bille1);
+}
+
 void andrewsTest ()
 {
 	wall *w = wall_new (0.0, 0.0, 1.0, HORIZONTAL, 10);
@@ -43,9 +50,16 @@ void cbDisplay ()
 	/*==================== ANDREW'S TESTING CODE ====================*/
 	/* Comment My Testing Function to Disable the testing            */
 	
-	andrewsTest();
+	//andrewsTest();
 	
 	/*================= END OF ANDREW'S TESTING CODE ================*/
+	
+	/*==================== MARLY'S TESTING CODE ====================*/
+	/* Comment My Testing Function to Disable the testing            */
+	
+	marlyBille();
+	
+	/*================= END OF MARLY'S TESTING CODE ================*/
 	
 	glutSwapBuffers ();
 }
