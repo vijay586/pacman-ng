@@ -8,6 +8,7 @@ struct _ground
 };
 typedef struct _ground ground;
 
+ground *newGround (float fW, fH, fD);
 void renderGround (ground *g);
 
 #endif
