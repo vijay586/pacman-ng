@@ -22,7 +22,7 @@ void renderOpenGL ()
 	gluLookAt (0.0, 60.0, 180.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
-void initOpenGL (float fWidth, float fHeight)
+void initOpenGL (int iWidth, int iHeight)
 {
 	glClearColor (0, 0, 0, 0);
 	glDisable (GL_DITHER);
@@ -37,41 +37,39 @@ void initOpenGL (float fWidth, float fHeight)
 	glEnable (GL_LIGHT3);
 	glEnable (GL_DEPTH_TEST);
 	glDepthFunc (GL_LESS);
-	glEnable (GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glViewport (0, 0, fWidth, fHeight);
+//	glEnable (GL_BLEND);
+//	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glViewport (0, 0, iWidth, iHeight);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 
-	gluPerspective ( 45.0, fWidth / fHeight, 1.0f, 800.0f);
+	gluPerspective ( 45.0, ((float)iWidth) / ((float)iHeight), 1.0, 800.0);
 	
 	/* set the light */
-	GLfloat light_intensity0 [] = {1.0, 1.0, 1.0, 0.0 };
-	GLfloat light_position0 [] = {5.0, 10.0, 5.0, 0.0};
+	float light_intensity [] = {1, 1, 1, 0};
+	
+	float light_position0 [] = {5, 10, 5, 0};
 	glLightfv (GL_LIGHT0, GL_POSITION, light_position0);	
-	glLightfv (GL_LIGHT0, GL_DIFFUSE, light_intensity0);
+	glLightfv (GL_LIGHT0, GL_DIFFUSE, light_intensity);
 	
-	GLfloat light_intensity1 [] = {1.0, 1.0, 1.0, 0.0 };
-	GLfloat light_position1 [] = {-5.0, 10.0, 5.0, 0.0};
+	float light_position1 [] = {-5, 10, 5, 0};
 	glLightfv (GL_LIGHT1, GL_POSITION, light_position1);	
-	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_intensity1);
+	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_intensity);
 	
-	GLfloat light_intensity2 [] = {1.0, 1.0, 1.0, 0.0 };
-	GLfloat light_position2 [] = {-5.0, 10.0, -5.0, 0.0};
+	float light_position2 [] = {-5, 10, -5, 0};
 	glLightfv (GL_LIGHT2, GL_POSITION, light_position2);	
-	glLightfv (GL_LIGHT2, GL_DIFFUSE, light_intensity2);
+	glLightfv (GL_LIGHT2, GL_DIFFUSE, light_intensity);
 	
-	GLfloat light_intensity3 [] = {1.0, 1.0, 1.0, 0.0 };
-	GLfloat light_position3 [] = {0.0, 0.0, 10.0, 0.0};
+	float light_position3 [] = {0, 0, 10, 0};
 	glLightfv (GL_LIGHT3, GL_POSITION, light_position3);	
-	glLightfv (GL_LIGHT3, GL_DIFFUSE, light_intensity3);
+	glLightfv (GL_LIGHT3, GL_DIFFUSE, light_intensity);
 	
 	/* set the material color */
-	GLfloat mat_ambient [] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat mat_specular [] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat mat_shininess [] = {90.0};
-	glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
-	glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
+	int mat_ambient [] = {1, 1, 1, 1};
+	int mat_specular [] = {1, 1, 1, 1};
+	int mat_shininess [] = {90};
+	glMaterialiv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
+	glMaterialiv (GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialiv (GL_FRONT, GL_SHININESS, mat_shininess);
 }
 
