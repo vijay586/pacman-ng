@@ -7,13 +7,7 @@ void renderOpenGL ()
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
 	
-	gluLookAt (0.0, 4.0, 15.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-	
-	/*
-	gluLookAt (pacman.pos.x, pacman.pos.y + 4.0, pacman.pos.z + 4.0, 
-				pacman.pos.x, pacman.pos.y, pacman.pos.z, 
-				0.0, 1.0, 0.0 );
-	*/
+	gluLookAt (0.0, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
 void initOpenGL (float fWidth, float fHeight)
