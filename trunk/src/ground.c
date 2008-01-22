@@ -3,7 +3,7 @@
 #include <GL/freeglut.h>
 #include <stdlib.h>
 
-void renderGround (ground *g)
+inline void renderGround (ground *g)
 {
 	glPushMatrix ();
 	glColor3f (0.0, 1.0, 0.0);
@@ -13,11 +13,11 @@ void renderGround (ground *g)
 	glPopMatrix ();
 }
 
-ground *newGround (float fW, float fH, float fD)
+ground *newGround (float fw, float fh, float fd)
 {
 	ground *temp = calloc (1, sizeof (ground));
-	temp->fWidth = fW;
-	temp->fHeight = fH;
-	temp->fDepth = fD;
+	temp->fWidth = fw;
+	temp->fHeight = fh;
+	temp->fDepth = fd;
 	return temp;
 }
