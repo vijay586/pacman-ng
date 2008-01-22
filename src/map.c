@@ -4,7 +4,7 @@
 
 map *map_new ()
 {
-	
+	return NULL;
 }
 
 
