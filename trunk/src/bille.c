@@ -4,13 +4,12 @@
 #include <stdlib.h>
 #include "global.h"
 
-bille *newBille (float fRadius, float fx, float fy, float fz, boolean bv)
+bille *newBille (int ix, int iy, int iz, boolean bv)
 {
 	bille *temp = calloc (1, sizeof (bille));
-	temp->fRadius = fRadius;
-	temp->fx = fx;
-	temp->fy = fy;
-	temp->fz = fz;
+	temp->ix = ix;
+	temp->iy = iy;
+	temp->iz = iz;
 	temp->bVisible = bv;
 	return temp;
 }
@@ -19,9 +18,11 @@ inline void bille_draw (bille *b)
 {
 	if (!b->bVisible)
 		return;
+	
 	glPushMatrix ();
-	glColor3f(1.0, 1.0, 0.0);
-	glTranslatef (b->fx, b->fy + b->fRadius, b->fz);
-	glutSolidSphere (b->fRadius, 100, 100);
+	glColor3d (0, 1, 1);
+	glTranslated (b->ix * CELL_SIZE, b->iy + (BILLE_RADIUS * 2), b->iz * CELL_SIZE);
+	glutSolidSphere (BILLE_RADIUS, 5, 5);
 	glPopMatrix ();
 }
+

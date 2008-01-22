@@ -3,11 +3,11 @@
 
 struct _ground
 {
-	float fWidth, fHeight, fDepth;
+	int iWidth, iHeight, iDepth;
 };
 typedef struct _ground ground;
 
-ground *newGround (float fw, float fh, float fd);
+ground *newGround (int iw, int ih, int id);
 inline void renderGround (ground *g);
 
 #endif

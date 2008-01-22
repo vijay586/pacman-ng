@@ -5,13 +5,14 @@
 
 struct _bille
 {
-	float fRadius, fx, fy, fz;
+	int ix, iy, iz;
 	boolean bVisible;
 };
 
 typedef struct _bille bille;
 
-bille *newBille (float fRadius, float fx, float fy, float fz, boolean bv);
+bille *newBille (int ix, int iy, int iz, boolean bv);
 inline void bille_draw (bille *b);
 
 #endif
+

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/freeglut.h>
 #include "glut-extra.h"
+#include "global.h"
 #include "opengl-render.h"
 #include "ground.h"
 #include "bille.h"
@@ -10,84 +11,72 @@
 #define WIN_W 800
 #define WIN_H 600
 
+void initGame (void);
+
 void cbKeyboard (unsigned char ucKey, int iX, int iY);
 void cbKeyboardSpecial (int iKey, int iX, int iY);
-
 void cbDisplay (void);
 void cbExit (void);
 
-ground mainGround = {10.0, 0.6, 10.0};
+int iMainWindow, iSubWindow;
+ground *pGround;
 
 int main (int argc, char *argv [])
 {
 	atexit (cbExit);
+	initGame ();
 	glutInit (&argc, argv);
-	initGlutWindow (WIN_W, WIN_H);
+	initGlutWindow (WIN_W, WIN_H, &iMainWindow, &iSubWindow);
 	initGlut ();
 	initOpenGL (WIN_W, WIN_H);
 	glutMainLoop ();
 	return 0;
 }
 
-void marlyBille ()
+void initGame ()
 {
-	bille *bille1 = newBille(0.15, 4.0, 0.0, 0.0, 1);
-	bille_draw(bille1);
+	pGround = newGround (11, 2, 21);
 }
 
-void marlyPac ()
+void testBille ()
 {
-	man *pacman = newMan(0.5, 0.0, 0.0, 0.0, FALSE);
-	man_draw (pacman);
+	bille *bille1 = newBille (4, 0, 5, TRUE);
+	bille_draw (bille1);
+}
+
+void testPac ()
+{
+	man *pacman = newMan (4.0, 0.0, 0.0, FALSE);
+	renderMan (pacman);
 	
-	man *evil1 = newMan(0.5, -4.0, 0.0, 0.0, TRUE);
-	man_draw (evil1);
+	man *evil1 = newMan (-8.0, 0.0, 0.0, TRUE);
+	renderMan (evil1);
 }
 
-void andrewsTest ()
+void testWall ()
 {
-	wall *w = wall_new (0.0, 0.0, 1.0, HORIZONTAL, 10);
+	wall *w = wall_new (-10.0, 0.0, 16.0, HORIZONTAL, 20);
 	wall_draw (w);
-	
-	glutSolidSphere (0.1, 100, 100);
 }
 
 void cbTopView ()
 {
 	renderTopView ();
-	
-	renderGround (&mainGround);
-	
-	andrewsTest();
-	
-	marlyBille();
-	
-	marlyPac();
-	
+	renderGround (pGround);
+	testWall ();
+	testBille ();
+	testPac ();
 	glutSwapBuffers ();
 }
 
 void cbDisplay ()
 {
 	renderOpenGL ();
+	renderGround (pGround);
 	
-	renderGround (&mainGround);
-	
-	/*==================== ANDREW'S TESTING CODE ====================*/
-	/* Comment My Testing Function to Disable the testing            */
-	
-	andrewsTest();
-	
-	/*================= END OF ANDREW'S TESTING CODE ================*/
-	
-	/*==================== MARLY'S TESTING CODE ====================*/
-	/* Comment My Testing Function to Disable the testing            */
-	
-	marlyBille();
-	
-	marlyPac();
-	
-	/*================= END OF MARLY'S TESTING CODE ================*/
+	testWall ();
+	testBille ();
+	testPac ();
 	
 	glutSwapBuffers ();
 }
@@ -121,10 +110,10 @@ void initGlut ()
 {
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_ACCUM | GLUT_DEPTH);
 	
-	glutSetWindow(subWindow);
-	glutDisplayFunc(cbTopView);
+	glutSetWindow (iSubWindow);
+	glutDisplayFunc (cbTopView);
 	
-	glutSetWindow(mainWindow);
+	glutSetWindow (iMainWindow);
 	glutDisplayFunc (cbDisplay);
 	
 //	glutIdleFunc (renderOpenGL);

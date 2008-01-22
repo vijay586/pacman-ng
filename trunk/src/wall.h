@@ -1,8 +1,8 @@
 #ifndef __WALL
 #define __WALL
 
-#define WALL_THICKNESS 0.3
-#define WALL_HEIGHT 1.0
+#define WALL_THICKNESS 10
+#define WALL_HEIGHT 5
 #define WALL_COLOR_R 0.5
 #define WALL_COLOR_G 0.5
 #define WALL_COLOR_B 0.0
