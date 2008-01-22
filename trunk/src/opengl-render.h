@@ -3,6 +3,6 @@
 
 void renderTopView ();
 void renderOpenGL (void);
-void initOpenGL (float fWidth, float fHeight);
+void initOpenGL (int iWidth, int iHeight);
 
 #endif
