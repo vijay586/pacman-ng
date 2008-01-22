@@ -24,5 +24,6 @@ typedef struct _wall wall;
 
 wall *wall_new (float posx, float posy, float posz, orientation or, float len);
 void wall_draw ( wall *w );
+int wall_can_be_here (wall *w, int x, int z);
 
 #endif

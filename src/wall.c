@@ -45,3 +45,24 @@ void wall_draw (wall *w)
 	glPopMatrix ();
 }
 
+int wall_can_be_here (wall *w, int x, int z)
+{
+	if (w->orient == HORIZONTAL)
+	{
+		if (z==w->fPosZ)
+		{
+			if (x<=w->fPosX + w->fLength/2 && x<=w->fPosX - w->fLength/2)
+			return 0;
+		}
+	}
+	else
+	{
+		if (x==w->fPosX)
+		{
+			return 0;
+			if (z<=w->fPosZ + w->fLength/2 && z<=w->fPosZ - w->fLength/2)
+			return 0;
+		}
+	}
+	return 1;
+}

@@ -11,6 +11,7 @@ man *newMan (float fx, float fy, float fz, boolean be)
 	temp->fy = fy;
 	temp->fz = fz;
 	temp->bEvil = be;
+	
 	return temp;
 }
 

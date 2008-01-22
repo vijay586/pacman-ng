@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <GL/freeglut.h>
+#include <stdio.h>
 #include "glut-extra.h"
 #include "global.h"
 #include "opengl-render.h"
@@ -7,6 +8,8 @@
 #include "bille.h"
 #include "wall.h"
 #include "man.h"
+#include "map.h"
+
 
 #define WIN_W 800
 #define WIN_H 600
@@ -18,8 +21,14 @@ void cbKeyboardSpecial (int iKey, int iX, int iY);
 void cbDisplay (void);
 void cbExit (void);
 
+int man_posx;
+man *pacman;
+map *my_map;
+ground mainGround = {21.0, 0.6, 21.0};
+
 int iMainWindow, iSubWindow;
 ground *pGround;
+
 
 int main (int argc, char *argv [])
 {
@@ -78,6 +87,7 @@ void cbDisplay ()
 	testBille ();
 	testPac ();
 	
+
 	glutSwapBuffers ();
 }
 
@@ -91,11 +101,24 @@ void cbKeyboard (unsigned char ucKey, int iX, int iY)
 	}
 }
 
+
+void up_button ()
+{
+	int check = map_can_be_here (my_map, pacman->fx, pacman->fz);
+	printf ("CHECK %d\n", check);
+	if (check)
+	{
+		//man_move (pacman);
+		glutPostRedisplay ();
+	}
+}
+
 void cbKeyboardSpecial (int iKey, int iX, int iY)
 {
 	switch (iKey)
 	{
 		case GLUT_KEY_UP:
+			up_button ();
 			break;
 		case GLUT_KEY_DOWN:
 			break;
@@ -120,6 +143,17 @@ void initGlut ()
 //	glutReshapeFunc (resize);
 	glutKeyboardFunc (cbKeyboard);
 	glutSpecialFunc (cbKeyboardSpecial);
+	
+	pacman = newMan(0.0, 0.0, 0.0, FALSE);
+	my_map = map_new ();
+	wall *w1 = wall_new (-10.0, 0.0, 0.0, VERTICAL, 21);
+	map_add_wall (my_map, w1);
+	wall *w2 = wall_new (10.0, 0.0, 0.0, VERTICAL, 21);
+	map_add_wall (my_map, w2);
+	wall *w3 = wall_new (0.0, 0.0, 10.0, HORIZONTAL, 21);
+	map_add_wall (my_map, w3);
+	wall *w4 = wall_new (0.0, 0.0, -10.0, HORIZONTAL, 21);
+	map_add_wall (my_map, w4);
 }
 
 void cbExit ()
