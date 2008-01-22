@@ -29,8 +29,10 @@ int main (int argc, char *argv [])
 
 void andrewsTest ()
 {
-	wall *w = wall_new (0.0, 2.0, 2.0, VERTICAL, 10);
+	wall *w = wall_new (0.0, 0.0, 1.0, HORIZONTAL, 10);
 	wall_draw (w);
+	
+	glutSolidSphere (0.1, 100, 100);
 }
 
 void cbDisplay ()
