@@ -1,6 +1,0 @@
-document.write('<a target=\"_blank\" href=\"http://ad.yieldmanager.com/click,UhgAAMoJAAC9fAMA2GEBAAIAAAAAAP8AAAADFwIABgNtBQAAPyMAAMg6AgAAAAAAAAAAAAAAAAAAAAAAAAAAANmbekcAAAAA,,http%3A%2F%2Fwww.gamedev.net%2Fbanman%2Fad.aspx%3Fzoneid%3D27%26task%3Dget%26pageid%3D98649%26,\"><img border=\"0\" alt=\"\" height=\"90\" width=\"728\" src=\"http://content.yieldmanager.edgesuite.net/atoms/2c/c6/2cc66465674e00e4abda0ef7d3743c18.gif\"></img></a>');
-var rm_data = new Object();
-rm_data.creative_id = 228541;
-rm_data.offer_type = 48;
-rm_data.entity_id = 10327;
-if (window.rm_crex_data) {rm_crex_data.push(228541);}
