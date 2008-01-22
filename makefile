@@ -1,4 +1,4 @@
-SRC = main.c opengl-render.c ground.c glut-extra.c wall.c bille.c 
+SRC = main.c opengl-render.c ground.c glut-extra.c wall.c bille.c man.c
 OUTPUT = pacman
 
 all:

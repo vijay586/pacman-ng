@@ -20,7 +20,7 @@ inline void bille_draw (bille *b)
 	if (!b->bVisible)
 		return;
 	glPushMatrix ();
-	glColor3f(0.0, 1.0, 1.0);
+	glColor3f(1.0, 1.0, 0.0);
 	glTranslatef (b->fx, b->fy + b->fRadius, b->fz);
 	glutSolidSphere (b->fRadius, 100, 100);
 	glPopMatrix ();

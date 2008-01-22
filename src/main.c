@@ -5,6 +5,7 @@
 #include "ground.h"
 #include "bille.h"
 #include "wall.h"
+#include "man.h"
 
 #define WIN_W 800
 #define WIN_H 600
@@ -30,8 +31,17 @@ int main (int argc, char *argv [])
 
 void marlyBille ()
 {
-	bille *bille1 = newBille(0.05, 0.0, 0.0, 0.0, 1);
+	bille *bille1 = newBille(0.15, 4.0, 0.0, 0.0, 1);
 	bille_draw(bille1);
+}
+
+void marlyPac ()
+{
+	man *pacman = newMan(0.5, 0.0, 0.0, 0.0, FALSE);
+	man_draw (pacman);
+	
+	man *evil1 = newMan(0.5, -4.0, 0.0, 0.0, TRUE);
+	man_draw (evil1);
 }
 
 void andrewsTest ()
@@ -57,9 +67,9 @@ void cbDisplay ()
 	/*==================== MARLY'S TESTING CODE ====================*/
 	/* Comment My Testing Function to Disable the testing            */
 	
-
-	// marlyBille();
-
+	marlyBille();
+	
+	marlyPac();
 	
 	/*================= END OF MARLY'S TESTING CODE ================*/
 	
