@@ -15,7 +15,7 @@ void cbKeyboardSpecial (int iKey, int iX, int iY);
 void cbDisplay (void);
 void cbExit (void);
 
-ground mainGround = {NULL, 10.0, 0.6, 10.0};
+ground mainGround = {NULL, 21.0, 0.6, 21.0};
 
 int main (int argc, char *argv [])
 {
@@ -50,14 +50,16 @@ void cbDisplay ()
 	/*==================== ANDREW'S TESTING CODE ====================*/
 	/* Comment My Testing Function to Disable the testing            */
 	
-	// andrewsTest();
+	andrewsTest();
 	
 	/*================= END OF ANDREW'S TESTING CODE ================*/
 	
 	/*==================== MARLY'S TESTING CODE ====================*/
 	/* Comment My Testing Function to Disable the testing            */
 	
+
 	// marlyBille();
+
 	
 	/*================= END OF MARLY'S TESTING CODE ================*/
 	
