@@ -2,6 +2,6 @@
 #define __OPENGL
 
 void renderOpenGL (void);
-void initOpenGL (void);
+void initOpenGL (float fWidth, float fHeight);
 
 #endif

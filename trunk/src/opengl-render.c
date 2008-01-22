@@ -5,14 +5,21 @@ void renderOpenGL ()
 {
 	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity (); 
-	glutSwapBuffers ();
+	glLoadIdentity ();
+	
+	gluLookAt (0.0, 4.0, 15.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	
+	/*
+	gluLookAt (pacman.pos.x, pacman.pos.y + 4.0, pacman.pos.z + 4.0, 
+				pacman.pos.x, pacman.pos.y, pacman.pos.z, 
+				0.0, 1.0, 0.0 );
+	*/
 }
 
-void initOpenGL ()
+void initOpenGL (float fWidth, float fHeight)
 {
 	glClearColor (0.0, 0.0, 0.0, 0.0);
-//	glDisable (GL_DITHER);
+	glDisable (GL_DITHER);
 	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
 	glEnable (GL_TEXTURE_RECTANGLE_ARB);
@@ -20,13 +27,13 @@ void initOpenGL ()
 	glEnable (GL_LIGHT0);
 	glEnable (GL_DEPTH_TEST);
 	glDepthFunc (GL_LESS);
-	glEnable (GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//	glViewport (0, 0, win_w, win_h);
-//	glMatrixMode (GL_PROJECTION);
-//	glLoadIdentity ();
-	gluPerspective ( 45.0, 1.0, 1.0f, 20.0f);
-//	gluLookAt ( 0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0 ); 
+//	glEnable (GL_BLEND);
+//	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glViewport (0, 0, fWidth, fHeight);
+	glMatrixMode (GL_PROJECTION);
+	glLoadIdentity ();
+
+	gluPerspective ( 45.0, fWidth / fHeight, 1.0f, 20.0f);
 	
 	/* set the light */
 	GLfloat light_intensity [] = {1.0, 1.0, 1.0, 0.0 };
