@@ -15,7 +15,7 @@ void cbKeyboardSpecial (int iKey, int iX, int iY);
 void cbDisplay (void);
 void cbExit (void);
 
-ground mainGround = {NULL, 21.0, 0.6, 21.0};
+ground mainGround = {10.0, 0.6, 10.0};
 
 int main (int argc, char *argv [])
 {
