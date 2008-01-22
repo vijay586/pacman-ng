@@ -52,9 +52,25 @@ void andrewsTest ()
 	glutSolidSphere (0.1, 100, 100);
 }
 
+void cbTopView ()
+{
+	renderTopView ();
+	
+	renderGround (&mainGround);
+	
+	andrewsTest();
+	
+	marlyBille();
+	
+	marlyPac();
+	
+	glutSwapBuffers ();
+}
+
 void cbDisplay ()
 {
 	renderOpenGL ();
+	
 	renderGround (&mainGround);
 	
 	/*==================== ANDREW'S TESTING CODE ====================*/
@@ -104,7 +120,13 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 void initGlut ()
 {
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_ACCUM | GLUT_DEPTH);
+	
+	glutSetWindow(subWindow);
+	glutDisplayFunc(cbTopView);
+	
+	glutSetWindow(mainWindow);
 	glutDisplayFunc (cbDisplay);
+	
 //	glutIdleFunc (renderOpenGL);
 //	glutReshapeFunc (resize);
 	glutKeyboardFunc (cbKeyboard);

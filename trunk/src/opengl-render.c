@@ -1,8 +1,21 @@
 #include "opengl-render.h"
+#include "glut-extra.h"
+
 #include <GL/freeglut.h>
+
+void renderTopView ()
+{
+	//glutSetWindow(subWindow);
+	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	glMatrixMode (GL_MODELVIEW);
+	glLoadIdentity ();
+		
+	gluLookAt (0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+}
 
 void renderOpenGL ()
 {
+	//glutSetWindow(mainWindow);
 	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
