@@ -5,16 +5,14 @@
 
 struct _man
 {
-	float fRadius, fx, fy, fz;
-	boolean bevil;
-	short svelocity [3];
+	float fx, fy, fz;
+	boolean bEvil;
 };
-
 typedef struct _man man;
 
-man *newMan (float fRadius, float fx, float fy, float fz, boolean bevil);
+man *newMan (float fx, float fy, float fz, boolean be);
 
-inline void man_draw (man *m);
-void man_move (man *m);
+inline void renderMan (man *m);
+// void man_move (man *m);
 
 #endif
