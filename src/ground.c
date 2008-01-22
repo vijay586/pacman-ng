@@ -2,12 +2,12 @@
 
 #include <GL/freeglut.h>
 
-void render_ground ()
+void renderGround (ground *g)
 {
 	glPushMatrix ();
 	glColor3f (0.0, 1.0, 0.0);
-	glTranslatef (0.0, -0.5, 0.0);
-	glScalef (5.0, 0.5, 10.0);
+	glTranslatef (0.0, -((g->fHeight) / 2), 0.0);
+	glScalef (g->fWidth, g->fHeight, g->fDepth);
 	glutSolidCube (1);
 	glPopMatrix ();
 }
