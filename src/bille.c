@@ -32,13 +32,13 @@ boolean set_bille_visibility (bille *pBilles [85], int x, int z, int score)
 	boolean bGameOver = TRUE;
 	while (i < 85)
 	{
-		if (pBilles [i] != NULL)
+		if (pBilles [i] != NULL && (pBilles [i])->bVisible == TRUE)
 		{
 			bGameOver = FALSE;
+			score += 10;
 			if(pBilles[i]->iz == z && pBilles[i]->ix == x)
 			{
 				pBilles[i]->bVisible=FALSE;
-				score += 10;
 			}
 		}
 		i++;
