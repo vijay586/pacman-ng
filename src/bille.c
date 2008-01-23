@@ -45,5 +45,4 @@ boolean set_bille_visibility (bille *pBilles [85], int x, int z, int score)
 	}
 	
 	return bGameOver;
-	
 }

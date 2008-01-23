@@ -14,7 +14,7 @@ void initBilles (map *pMap, bille *pBilles [85], man *m)
 		z = -5;
 		while (z <= 5)
 		{
-			if(m->ix!=x || m->iz!=z)
+			if (m->ix != x || m->iz != z)
 				if (map_can_be_here (pMap, x, z))
 				{
 					pBilles [i] = newBille (x, 0, z, TRUE);
@@ -26,7 +26,7 @@ void initBilles (map *pMap, bille *pBilles [85], man *m)
 	}
 }
 
-void renderBilles (bille *pBilles [85])
+inline void renderBilles (bille *pBilles [85])
 {
 	int i = 0;
 	while (i < 85)

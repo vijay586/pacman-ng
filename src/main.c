@@ -18,7 +18,7 @@
 #define WIN_H 600
 
 void initGame (void);
-
+void moveEvil (int val);
 void cbKeyboard (unsigned char ucKey, int iX, int iY);
 void cbKeyboardSpecial (int iKey, int iX, int iY);
 void cbDisplay (void);
@@ -49,11 +49,11 @@ int main (int argc, char *argv [])
 
 void moveEvil (int val)
 {
-	int x = rand()%4;
+	int x = rand() % 4;
 	int check = 0;
-	while (check==0)
+	while (check == 0)
 	{
-		x = rand()%4;
+		x = rand() % 4;
 		check = 0;
 		switch (x)
 		{
@@ -61,17 +61,14 @@ void moveEvil (int val)
 				check = map_can_be_here (pMap, pEvil->ix+1, pEvil->iz);
 				if (check) pEvil->ix++;
 				break;
-				
 			case 1: 
 				check = map_can_be_here (pMap, pEvil->ix, pEvil->iz+1);
 				if (check) pEvil->iz++;
 				break;
-			
 			case 2: 
 				check = map_can_be_here (pMap, pEvil->ix-1, pEvil->iz);
 				if (check) pEvil->ix--;
 				break;
-			
 			case 3: 
 				check = map_can_be_here (pMap, pEvil->ix, pEvil->iz-1);
 				if (check) pEvil->iz--;
@@ -96,12 +93,6 @@ void initGame ()
 	pEvil = newMan (-2, 0, -2, TRUE);
 	initMap (pMap);
 	initBilles (pMap, pBilles, pPacman);
-	displayList = glGenLists (1);
-	glNewList (displayList, GL_COMPILE);
-	//renderGround (pGround);
-	//renderMap (pMap);
-	//renderMan (pPacman);
-	glEndList ();
 	moveEvil (1);
 	texture = LoadTextureRAW( "texture.raw", TRUE );
 }
@@ -125,15 +116,15 @@ void testTexture ()
 
 void cbDisplay ()
 {
-	renderOpenGL (displayList, pPacman->ix * CELL_SIZE, pPacman->iz * CELL_SIZE);
+	renderOpenGL (pPacman->ix * CELL_SIZE, pPacman->iz * CELL_SIZE);
 	testTexture ();
 	renderGround (pGround);
 	renderMap (pMap);
 	renderMan (pPacman);
 	renderMan (pEvil);
 	renderBilles (pBilles);
-	// sprintf (scoreNum, "%d", score);
-	// renderText (scoreNum);
+//	sprintf (scoreNum, "%d", score);
+//	renderText (scoreNum);
 	if (bGameOver)
 	{
 		renderText ("Game Over!!!");

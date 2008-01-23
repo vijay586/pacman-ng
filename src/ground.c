@@ -11,20 +11,7 @@ inline void renderGround (ground *g)
 	glTranslated (0, -(g->iHeight), 0);
 	glScaled (g->iWidth * CELL_SIZE, g->iHeight, g->iDepth * CELL_SIZE);
 	glutSolidCube (1);
-//	glMatrixMode (GL_PROJECTION);
-//	glLoadIdentity ();
-//	glBindTexture (GL_TEXTURE_2D, g->uiTextureId);
-//	glEnable (GL_TEXTURE_2D);
-//	glBegin (GL_QUADS);
-//	glTexCoord3i (-1, 0, -1);	glVertex3i (-1, 0, -1);
-//	glTexCoord3i (1, 0, -1);	glVertex3i (1, 0, -1);
-//	glTexCoord3i (1, 0, 1);		glVertex3i (1, 0, 1);
-//	glTexCoord3i (-1, 0, 1);	glVertex3i (-1, 0, 1);
-//	glEnd ();
-//	glDisable (GL_TEXTURE_2D);
 	glPopMatrix ();
-//	glMatrixMode (GL_MODELVIEW);
-//	glLoadIdentity ();
 }
 
 ground *newGround (int iw, int ih, int id)
