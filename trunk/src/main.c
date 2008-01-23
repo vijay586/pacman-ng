@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
 #include "glut-extra.h"
@@ -144,7 +144,8 @@ void cbKeyboard (unsigned char ucKey, int iX, int iY)
 	switch (ucKey)
 	{
 		case 'q':
-			glutLeaveMainLoop ();
+//			glutLeaveMainLoop ();			
+			exit (0);
 			break;
 	}
 }
@@ -156,43 +157,23 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 		switch (iKey)
 		{
 			case GLUT_KEY_UP:
-				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
-				{
-					bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz-1, iScore);
-					iScore+=10;
-					pPacman->iz--;
-				}
+				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1)) pPacman->iz--;
 				break;
 			case GLUT_KEY_DOWN:
-				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
-				{
-					bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz+1, iScore);
-					iScore+=10;
-					pPacman->iz++;
-				}
+				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1)) pPacman->iz++;
 				break;
 			case GLUT_KEY_LEFT:
-				if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
-				{
-					bWin = set_bille_visibility (pBilles, pPacman->ix-1, pPacman->iz, iScore);
-					iScore+=10;
-					pPacman->ix--;
-				}
+				if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz)) pPacman->ix--;
 				break;
 			case GLUT_KEY_RIGHT:
-				if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
-				{
-					bWin = set_bille_visibility (pBilles, pPacman->ix+1, pPacman->iz, iScore);
-					iScore+=10;
-					pPacman->ix++;
-				}
+				if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz)) pPacman->ix++;
 				break;
 		}
 		
 		if (pPacman->ix == pEvil->ix && pPacman->iz == pEvil->iz)
 			bGameOver = TRUE;
 		
-		bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, iScore);
+		bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, &iScore);
 		glutPostRedisplay ();
 	}
 }

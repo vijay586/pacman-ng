@@ -1,7 +1,7 @@
 #include "opengl-render.h"
 #include "glut-extra.h"
 
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 
 inline void renderOpenGL (int x, int z)
 {

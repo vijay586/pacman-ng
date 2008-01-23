@@ -1,6 +1,6 @@
 #include "ground.h"
 
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #include <stdlib.h>
 #include "global.h"
 

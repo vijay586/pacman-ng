@@ -13,7 +13,7 @@ typedef struct _bille bille;
 
 bille *newBille (int ix, int iy, int iz, boolean bv);
 inline void renderBille (bille *b);
-boolean set_bille_visibility (bille *pBilles [85], int x, int z, int score);
+boolean set_bille_visibility (bille *pBilles [85], int x, int z, int *iScore);
 
 #endif
 
