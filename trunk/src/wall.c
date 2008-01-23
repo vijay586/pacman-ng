@@ -52,7 +52,8 @@ int wall_can_be_here (wall *w, int x, int z)
 	{
 		if (z==w->fPosZ)
 		{
-			if (x<= (int) (w->fPosX + w->fLength/2) && x>= (int) (w->fPosX - w->fLength/2))
+			//if (x<= (int) (w->fPosX + w->fLength/2) && x>= (int) (w->fPosX - w->fLength/2))
+			if (x<= (w->fPosX + w->fLength/2) && x>= (w->fPosX - w->fLength/2))
 			return 0;
 		}
 	}
@@ -60,7 +61,8 @@ int wall_can_be_here (wall *w, int x, int z)
 	{
 		if (x==w->fPosX)
 		{
-			if (z<= (int) (w->fPosZ + w->fLength/2) && z >= (int) (w->fPosZ - w->fLength/2))
+			//if (z<= (int) (w->fPosZ + w->fLength/2) && z >= (int) (w->fPosZ - w->fLength/2))
+			if (z<= (w->fPosZ + w->fLength/2) && z >= (w->fPosZ - w->fLength/2))
 			return 0;
 		}
 	}
