@@ -1,6 +1,6 @@
 #include "bille.h"
 
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #include <stdlib.h>
 #include "global.h"
 
@@ -26,23 +26,23 @@ inline void renderBille (bille *b)
 	glPopMatrix ();
 }
 
-boolean set_bille_visibility (bille *pBilles [85], int x, int z, int score)
+boolean set_bille_visibility (bille *pBilles [85], int x, int z, int *iScore)
 {
 	int i = 0; 
-	boolean bGameOver = TRUE;
+	boolean bWin = TRUE;
 	while (i < 85)
 	{
 		if (pBilles [i] != NULL && (pBilles [i])->bVisible == TRUE)
 		{
-			bGameOver = FALSE;
-			score += 10;
+			bWin = FALSE;
 			if(pBilles[i]->iz == z && pBilles[i]->ix == x)
 			{
-				pBilles[i]->bVisible=FALSE;
+				pBilles[i]->bVisible = FALSE;
+				(*iScore) += 10;
 			}
 		}
 		i++;
 	}
 	
-	return bGameOver;
+	return bWin;
 }

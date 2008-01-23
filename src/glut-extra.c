@@ -1,6 +1,6 @@
 #include "glut-extra.h"
 
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #include "opengl-render.h"
 
 void initGlutWindow (int iWidth, int iHeight)
