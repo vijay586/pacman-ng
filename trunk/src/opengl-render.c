@@ -13,7 +13,7 @@ inline void renderOpenGL (int x, int z)
 
 void initOpenGL (int iWidth, int iHeight)
 {
-	glClearColor (0, 0, 0, 0);
+	glClearColor (1, 1, 1, 0);
 	glDisable (GL_DITHER);
 	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
