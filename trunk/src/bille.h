@@ -12,7 +12,7 @@ struct _bille
 typedef struct _bille bille;
 
 bille *newBille (int ix, int iy, int iz, boolean bv);
-inline void bille_draw (bille *b);
+inline void renderBille (bille *b);
 
 #endif
 

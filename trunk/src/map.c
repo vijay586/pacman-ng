@@ -1,8 +1,9 @@
 #include <GL/glut.h>
 #include <stdlib.h>
 #include "map.h"
+#include "global.h"
 
-map *map_new ()
+map *newMap ()
 {
 	map *new_map = calloc (1, sizeof (map));
 	new_map->walls = NULL;
@@ -17,7 +18,7 @@ void map_add_wall (map *m, wall *w)
 	m->walls[m->walls_len-1] = *w;
 }
 
-void map_draw (map *m)
+void renderMap (map *m)
 {
 	int i = 0;
 	while (i<m->walls_len)
@@ -27,15 +28,15 @@ void map_draw (map *m)
 	}
 }
 
-int map_can_be_here (map *m, int x, int z)
+boolean map_can_be_here (map *m, int x, int z)
 {
-	int i=0;
-	int check = 0;
-	while (i<m->walls_len)
+	int i = 0;
+	boolean check = FALSE;
+	while (i < m->walls_len)
 	{
 		check = wall_can_be_here (&m->walls[i], x, z);
-		if (!check) return 0;
+		if (!check) return FALSE;
 		i++;
 	}
-	return 1;
+	return TRUE;
 }
