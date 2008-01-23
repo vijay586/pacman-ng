@@ -10,6 +10,7 @@
 #include "man.h"
 #include "map.h"
 #include "game.h"
+#include "texture.h"
 
 #define WIN_W 800
 #define WIN_H 600
@@ -26,6 +27,7 @@ man *pPacman;
 map *pMap;
 bille *pBilles [85];
 unsigned int displayList;
+unsigned int texture;
 
 int main (int argc, char *argv [])
 {
@@ -52,15 +54,38 @@ void initGame ()
 	//renderMap (pMap);
 	//renderMan (pPacman);
 	glEndList ();
+	
+	texture = LoadTextureRAW( "texture.raw", TRUE );
+}
+
+
+
+void testTexture ()
+{
+	glEnable( GL_TEXTURE_2D );
+	glBindTexture( GL_TEXTURE_2D, texture );
+
+	glPushMatrix();
+	glColor3f (1.0, 1.0, 1.0);
+	glScaled (60.0, 60.0, 60.0);
+	glBegin( GL_QUADS );
+	glTexCoord2d(0.0,0.0); glVertex3d(-1.0, 0.0, +1.0);
+	glTexCoord2d(1.0,0.0); glVertex3d(+1.0, 0.0, +1.0);
+	glTexCoord2d(1.0,1.0); glVertex3d(+1.0, 0.0, -1.0);
+	glTexCoord2d(0.0,1.0); glVertex3d(-1.0, 0.0, -1.0);
+	glEnd();
+	glPopMatrix();
 }
 
 void cbDisplay ()
 {
 	renderOpenGL (displayList, pPacman->ix * CELL_SIZE, pPacman->iz * CELL_SIZE);
+	testTexture ();
 	renderGround (pGround);
 	renderMap (pMap);
 	renderMan (pPacman);
 	renderBilles (pBilles);
+	
 	glutSwapBuffers ();
 }
 
