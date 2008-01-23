@@ -1,8 +1,7 @@
 #ifndef __OPENGL_RENDER
 #define __OPENGL_RENDER
 
-void renderTopView ();
-void renderOpenGL (void);
+void renderOpenGL (unsigned int uiDL);
 void initOpenGL (int iWidth, int iHeight);
 
 #endif

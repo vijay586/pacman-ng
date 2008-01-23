@@ -3,23 +3,14 @@
 
 #include <GL/freeglut.h>
 
-void renderTopView ()
-{
-	//glutSetWindow(subWindow);
-	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity ();
-		
-	gluLookAt (0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0);
-}
-
-void renderOpenGL ()
+void renderOpenGL (unsigned int uiDL)
 {
 	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
 	gluLookAt (0.0, 60.0, 180.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-
+	glCallList (uiDL);
+	glutSwapBuffers ();
 }
 
 void initOpenGL (int iWidth, int iHeight)
@@ -31,9 +22,9 @@ void initOpenGL (int iWidth, int iHeight)
 	glEnable (GL_TEXTURE_2D);
 	glEnable (GL_TEXTURE_RECTANGLE_ARB);
 	glEnable (GL_LIGHTING);
-	//glEnable (GL_LIGHT0);
-	//glEnable (GL_LIGHT1);
-	//glEnable (GL_LIGHT2);
+//	glEnable (GL_LIGHT0);
+//	glEnable (GL_LIGHT1);
+//	glEnable (GL_LIGHT2);
 	glEnable (GL_LIGHT3);
 	glEnable (GL_DEPTH_TEST);
 	glDepthFunc (GL_LESS);
