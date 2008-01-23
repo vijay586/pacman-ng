@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 #include "glut-extra.h"
 #include "global.h"
 #include "opengl-render.h"
@@ -33,7 +34,7 @@ unsigned int displayList;
 unsigned int texture;
 boolean bGameOver = FALSE, bWin = FALSE;
 int iScore = 0;
-char cScoreNum [5];
+char cScoreNum [12] = "SCORE: 00000";
 
 int main (int argc, char *argv [])
 {
@@ -49,9 +50,9 @@ int main (int argc, char *argv [])
 
 void moveEvil (int val)
 {
-	int x = rand() % 4;
+	int x = abs ((((time (NULL)) % 60) * rand ()) % 4);
 	int check = 0;
-	while (check == 0)
+	while (check == 0 && !bWin && !bGameOver)
 	{
 		x = rand() % 4;
 		check = 0;
@@ -123,19 +124,13 @@ void cbDisplay ()
 	renderMan (pPacman);
 	renderMan (pEvil);
 	renderBilles (pBilles);
-//	sprintf (scoreNum, "%d", score);
-//	renderText (scoreNum);
-	if (bGameOver)
-	{
-		renderText ("Game Over!!!");
-		printf ("Game Over!!!\n");
-	}
+	sprintf (cScoreNum, "SCORE: %d", iScore);
+	if (!bGameOver && !bWin)
+		renderText (cScoreNum);
+	if (bGameOver && !bWin)
+		renderText ("GAME OVER :\(");
 	if (bWin)
-	{
-		renderText ("You WIN!!!");
-		printf ("You WIN!!!\n");
-	}
-	printf ("Score: %d\n", iScore);
+		renderText ("YOU WIN!!!");
 	glutSwapBuffers ();
 }
 
