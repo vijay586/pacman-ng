@@ -30,6 +30,7 @@ bille *pBilles [85];
 unsigned int displayList;
 int score;
 unsigned int texture;
+boolean bGameOver;
 
 int main (int argc, char *argv [])
 {
@@ -60,8 +61,6 @@ void initGame ()
 	
 	texture = LoadTextureRAW( "texture.raw", TRUE );
 }
-
-
 
 void testTexture ()
 {
@@ -109,32 +108,34 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 		case GLUT_KEY_UP:
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
 			{
+				bGameOver = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz-1, score);
 				pPacman->iz--;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_DOWN:
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
 			{
+				bGameOver = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz+1, score);
 				pPacman->iz++;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_LEFT:
 			if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
 			{
+				bGameOver = set_bille_visibility (pBilles, pPacman->ix-1, pPacman->iz, score);
 				pPacman->ix--;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_RIGHT:
 			if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
 			{
+				bGameOver = set_bille_visibility (pBilles, pPacman->ix+1, pPacman->iz, score);
 				pPacman->ix++;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 	}
+	if(bGameOver)
+		gameOver();
 	glutPostRedisplay ();
 }
 
