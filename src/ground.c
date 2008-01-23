@@ -6,21 +6,21 @@
 
 inline void renderGround (ground *g)
 {
-	glEnable (GL_TEXTURE_2D);
 	glPushMatrix ();
 	glColor3d (0, 1, 0);
 	glTranslated (0, -(g->iHeight), 0);
 	glScaled (g->iWidth * CELL_SIZE, g->iHeight, g->iDepth * CELL_SIZE);
 	glutSolidCube (1);
 	glBindTexture (GL_TEXTURE_2D, g->uiTextureId);
+	glEnable (GL_TEXTURE_2D);
 	glBegin (GL_QUADS);
-	glTexCoord3i (-1, 1, -1);	glVertex3i (-1, 1, -1);
-	glTexCoord3i (1, 1, -1);	glVertex3i (1, 1, -1);
-	glTexCoord3i (1, 1, 1);		glVertex3i (1, 1, 1);
-	glTexCoord3i (-1, 1, 1);	glVertex3i (-1, 1, 1);
+	glTexCoord3i (-1, 0, -1);	glVertex3i (-1, 0, -1);
+	glTexCoord3i (1, 0, -1);	glVertex3i (1, 0, -1);
+	glTexCoord3i (1, 0, 1);		glVertex3i (1, 0, 1);
+	glTexCoord3i (-1, 0, 1);	glVertex3i (-1, 0, 1);
 	glEnd ();
-	glPopMatrix ();
 	glDisable (GL_TEXTURE_2D);
+	glPopMatrix ();
 }
 
 ground *newGround (int iw, int ih, int id)

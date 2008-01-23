@@ -46,9 +46,9 @@ void initGame ()
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
 	renderGround (pGround);
-//	testWall ();
-//	testBille ();
-//	testPac ();
+	testWall ();
+	testBille ();
+	testPac ();
 	glEndList ();
 }
 
@@ -145,11 +145,7 @@ void testWall ()
 	
 	wall *w25 = wall_new (-4.0, 0.0, -5.0, HORIZONTAL, 1);
 	map_add_wall (my_map, w25);
-	
-	
-	
-	
-	
+		
 	map_draw (my_map);
 }
 
