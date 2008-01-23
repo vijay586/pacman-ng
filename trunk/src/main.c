@@ -42,10 +42,10 @@ int main (int argc, char *argv [])
 void initGame ()
 {
 	pGround = newGround (13, 2, 13);
-	pPacman = newMan (3, 0, 5, FALSE);
+	pPacman = newMan (-1, 0, 5, FALSE);
 	pMap = newMap ();
 	initMap (pMap);
-	initBilles (pMap, pBilles);
+	initBilles (pMap, pBilles, pPacman);
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
 	//renderGround (pGround);
@@ -80,19 +80,31 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 	{
 		case GLUT_KEY_UP:
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
+			{
 				pPacman->iz--;
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+			}
 			break;
 		case GLUT_KEY_DOWN:
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
+			{
 				pPacman->iz++;
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+			}
 			break;
 		case GLUT_KEY_LEFT:
 			if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
+			{
 				pPacman->ix--;
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+			}
 			break;
 		case GLUT_KEY_RIGHT:
 			if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
+			{
 				pPacman->ix++;
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+			}
 			break;
 	}
 	glutPostRedisplay ();

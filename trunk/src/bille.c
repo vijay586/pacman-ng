@@ -22,7 +22,19 @@ inline void renderBille (bille *b)
 	glPushMatrix ();
 	glColor3d (0, 1, 1);
 	glTranslated (b->ix * CELL_SIZE, b->iy + (BILLE_RADIUS * 2), b->iz * CELL_SIZE);
-	glutSolidSphere (BILLE_RADIUS, 5, 5);
+	glutSolidSphere (BILLE_RADIUS, 10, 10);
 	glPopMatrix ();
 }
 
+void set_bille_visibility (bille *pBilles [85], int x, int z)
+{
+	int i = 0;
+	while (i < 85)
+	{
+		if (pBilles [i] != NULL)
+			if(pBilles[i]->iz == z && pBilles[i]->ix == x)
+				pBilles[i]->bVisible=FALSE;
+		i++;
+	}
+	
+}
