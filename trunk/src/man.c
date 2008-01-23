@@ -15,7 +15,7 @@ man *newMan (float ix, float iy, float iz, boolean be)
 	return temp;
 }
 
-void renderMan (man *m)
+inline void renderMan (man *m)
 {
 	glPushMatrix ();
 	if (m->bEvil)
@@ -27,12 +27,3 @@ void renderMan (man *m)
 	glutSolidSphere (CELL_SIZE / 2, 50, 50);
 	glPopMatrix ();
 }
-
-/*
-void man_move (man *m)
-{
-	m->fx += m->svelocity [0] * 0.05;
-	m->fy += m->svelocity [1] * 0.05;
-	m->fz += m->svelocity [2] * 0.05;
-}
-*/

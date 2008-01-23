@@ -17,7 +17,7 @@ typedef struct _map map;
 
 map *newMap (void);
 void map_add_wall (map *m, wall *w);
-void renderMap (map *m);
+inline void renderMap (map *m);
 boolean map_can_be_here (map *m, int x, int z);
 
 #endif

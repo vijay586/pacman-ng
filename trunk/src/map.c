@@ -18,10 +18,10 @@ void map_add_wall (map *m, wall *w)
 	m->walls[m->walls_len-1] = *w;
 }
 
-void renderMap (map *m)
+inline void renderMap (map *m)
 {
 	int i = 0;
-	while (i<m->walls_len)
+	while (i < m->walls_len)
 	{
 		wall_draw (&m->walls[i]);
 		i++;

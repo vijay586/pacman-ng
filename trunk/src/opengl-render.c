@@ -3,33 +3,34 @@
 
 #include <GL/freeglut.h>
 
-void renderOpenGL (unsigned int uiDL, int x, int z)
+inline void renderOpenGL (int x, int z)
 {
 	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
-	gluLookAt (x, 120.0, z + 150.0, x, 0.0, z, 0.0, 1.0, 0.0);
-//	glCallList (uiDL);
-//	glutSwapBuffers ();
+	gluLookAt (x, 140.0, z + 120.0, x, 0.0, z, 0.0, 1.0, 0.0);
 }
 
 void initOpenGL (int iWidth, int iHeight)
 {
 	glClearColor (0, 0, 0, 0);
-	glDisable (GL_DITHER);
-	glDisable (GL_NORMALIZE);
+//	glDisable (GL_DITHER);
+//	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
-	glDisable (GL_TEXTURE_RECTANGLE_ARB);
+//	glShadeModel(GL_SMOOTH);
+//	glShadeModel (GL_FLAT);
+//	glDisable (GL_TEXTURE_RECTANGLE_ARB);
 	glEnable (GL_LIGHTING);
+//	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 //	glEnable (GL_LIGHT0);
 //	glEnable (GL_LIGHT1);
 //	glEnable (GL_LIGHT2);
 	glEnable (GL_LIGHT3);
 	glEnable (GL_DEPTH_TEST);
-	glDepthFunc (GL_LESS);
+//	glDepthFunc (GL_LESS);
 //	glEnable (GL_BLEND);
 //	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glViewport (0, 0, iWidth, iHeight);
+//	glViewport (0, 0, iWidth, iHeight);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 

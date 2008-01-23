@@ -13,6 +13,5 @@ typedef struct _man man;
 man *newMan (float ix, float iy, float iz, boolean be);
 
 inline void renderMan (man *m);
-// void man_move (man *m);
 
 #endif
