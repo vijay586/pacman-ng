@@ -14,12 +14,12 @@ inline void renderOpenGL (int x, int z)
 void initOpenGL (int iWidth, int iHeight)
 {
 	glClearColor (0, 0, 0, 0);
-//	glDisable (GL_DITHER);
-//	glDisable (GL_NORMALIZE);
+	glDisable (GL_DITHER);
+	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
 //	glShadeModel(GL_SMOOTH);
 //	glShadeModel (GL_FLAT);
-//	glDisable (GL_TEXTURE_RECTANGLE_ARB);
+	glDisable (GL_TEXTURE_RECTANGLE_ARB);
 	glEnable (GL_LIGHTING);
 //	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
 //	glEnable (GL_LIGHT0);
@@ -27,14 +27,17 @@ void initOpenGL (int iWidth, int iHeight)
 //	glEnable (GL_LIGHT2);
 	glEnable (GL_LIGHT3);
 	glEnable (GL_DEPTH_TEST);
-//	glDepthFunc (GL_LESS);
-//	glEnable (GL_BLEND);
+//	glRenderMode (GL_RENDER);
+	glDepthFunc (GL_LEQUAL);
+	glDepthRange (0, 0.2);
+	glDisable (GL_BLEND);
+	glDisable (GL_LINE_SMOOTH);
 //	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 //	glViewport (0, 0, iWidth, iHeight);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 
-	gluPerspective (45.0, ((float) iWidth) / ((float) iHeight), 1.0, 800.0);
+	gluPerspective (45.0, ((float) iWidth) / ((float) iHeight), 1.0, 400.0);
 	
 	/* set the light */
 	float light_intensity [] = {1, 1, 1, 0};
