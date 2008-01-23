@@ -5,12 +5,12 @@
 
 struct _man
 {
-	float fx, fy, fz;
+	int ix, iy, iz;
 	boolean bEvil;
 };
 typedef struct _man man;
 
-man *newMan (float fx, float fy, float fz, boolean be);
+man *newMan (float ix, float iy, float iz, boolean be);
 
 inline void renderMan (man *m);
 // void man_move (man *m);

@@ -14,7 +14,7 @@ bille *newBille (int ix, int iy, int iz, boolean bv)
 	return temp;
 }
 
-inline void bille_draw (bille *b)
+inline void renderBille (bille *b)
 {
 	if (!b->bVisible)
 		return;

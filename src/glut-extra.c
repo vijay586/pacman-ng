@@ -15,7 +15,7 @@ void initGlut (void (*cbDisplay) (void), void (*cbKeyboard) (unsigned char ucKey
 {
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_ACCUM | GLUT_DEPTH);	
 	glutDisplayFunc (cbDisplay);
-//	glutIdleFunc (renderOpenGL);
+//	glutIdleFunc (cbDisplay);
 //	glutReshapeFunc (resize);
 	glutKeyboardFunc (cbKeyboard);
 	glutSpecialFunc (cbKeyboardSpecial);	

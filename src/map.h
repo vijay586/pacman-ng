@@ -2,6 +2,7 @@
 #define __MAP
 
 #include "wall.h"
+#include "global.h"
 
 #define MAP_WIDTH 20
 #define MAP_HEIGHT 20
@@ -14,9 +15,9 @@ struct _map
 };
 typedef struct _map map;
 
-map *map_new ();
+map *newMap (void);
 void map_add_wall (map *m, wall *w);
-void map_draw (map *m);
-int map_can_be_here (map *m, int x, int z);
+void renderMap (map *m);
+boolean map_can_be_here (map *m, int x, int z);
 
 #endif
