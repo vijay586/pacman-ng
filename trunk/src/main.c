@@ -41,7 +41,7 @@ int main (int argc, char *argv [])
 
 void initGame ()
 {
-	pGround = newGround (11, 2, 21);
+	pGround = newGround (13, 2, 13);
 	
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
@@ -69,8 +69,88 @@ void testPac ()
 
 void testWall ()
 {
-	wall *w = wall_new (-10.0, 0.0, 16.0, HORIZONTAL, 20);
-	wall_draw (w);
+	map *my_map = map_new ();
+	
+	wall *w1 = wall_new (5.0, 0.0, 5.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w1);
+	
+	wall *w2 = wall_new (2.0, 0.0, 5.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w2);
+	
+	wall *w3 = wall_new (-2.0, 0.0, 4.0, VERTICAL, 3);
+	map_add_wall (my_map, w3);
+	
+	wall *w4 = wall_new (-4.5, 0.0, 5.0, HORIZONTAL, 2);
+	map_add_wall (my_map, w4);
+	
+	wall *w5 = wall_new (3.0, 0.0, 4.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w5);
+	
+	wall *w6 = wall_new (0.0, 0.0, 2.0, VERTICAL, 5);
+	map_add_wall (my_map, w6);
+	
+	wall *w7 = wall_new (4.0, 0.0, 3.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w7);
+	
+	wall *w8 = wall_new (2.0, 0.0, 3.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w8);
+	
+	wall *w9 = wall_new (-4.5, 0.0, 3.0, HORIZONTAL, 2);
+	map_add_wall (my_map, w9);
+	
+	wall *w10 = wall_new (-5.0, 0.0, 2.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w10);
+	
+	wall *w11 = wall_new (4.5, 0.0, 1.0, HORIZONTAL, 2);
+	map_add_wall (my_map, w11);
+	
+	wall *w12 = wall_new (-0.5, 0.0, 1.0, HORIZONTAL, 6);
+	map_add_wall (my_map, w12);
+	
+	wall *w13 = wall_new (-4.0, 0.0, -0.5, VERTICAL, 2);
+	map_add_wall (my_map, w13);
+	
+	wall *w14 = wall_new (5.0, 0.0, -1.5, VERTICAL, 2);
+	map_add_wall (my_map, w14);
+	
+	wall *w15 = wall_new (2.5, 0.0, -1.0, HORIZONTAL, 2);
+	map_add_wall (my_map, w15);
+	
+	wall *w16 = wall_new (-1.5, 0.0, -1.0, HORIZONTAL, 2);
+	map_add_wall (my_map, w16);
+	
+	wall *w17 = wall_new (1.0, 0.0, -2.0, VERTICAL, 1);
+	map_add_wall (my_map, w17);
+	
+	wall *w18 = wall_new (-2.0, 0.0, -2.0, VERTICAL, 1);
+	map_add_wall (my_map, w18);
+	
+	wall *w19 = wall_new (2.0, 0.0, -3.0, HORIZONTAL, 3);
+	map_add_wall (my_map, w19);
+	
+	wall *w20 = wall_new (-3.0, 0.0, -3.5, VERTICAL, 2);
+	map_add_wall (my_map, w20);
+	
+	wall *w21 = wall_new (-5.0, 0.0, -3.0, VERTICAL, 1);
+	map_add_wall (my_map, w21);
+	
+	wall *w22 = wall_new (3.0, 0.0, -4.0, HORIZONTAL, 3);
+	map_add_wall (my_map, w22);
+	
+	wall *w23 = wall_new (-1.0, 0.0, -4.5, VERTICAL, 2);
+	map_add_wall (my_map, w23);
+	
+	wall *w24 = wall_new (0.0, 0.0, -5.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w24);
+	
+	wall *w25 = wall_new (-4.0, 0.0, -5.0, HORIZONTAL, 1);
+	map_add_wall (my_map, w25);
+	
+	
+	
+	
+	
+	map_draw (my_map);
 }
 
 void cbDisplay ()
@@ -111,6 +191,7 @@ void initGlut ()
 //	glutReshapeFunc (resize);
 	glutKeyboardFunc (cbKeyboard);
 	glutSpecialFunc (cbKeyboardSpecial);
+	
 }
 
 void cbExit ()

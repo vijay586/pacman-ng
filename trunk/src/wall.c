@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "global.h"
 #include "wall.h"
 
 wall *wall_new (float fposx, float fposy, float fposz, orientation orient, float flen)
@@ -22,16 +23,16 @@ void wall_draw (wall *w)
 	float trans_x, trans_y, trans_z;
 	if ( w->orient )
 	{
-		trans_x = w->fPosX;
-		trans_z = w->fPosZ;
-		scaling_x = w->fLength;
+		trans_x = w->fPosX*CELL_SIZE;
+		trans_z = w->fPosZ*CELL_SIZE;
+		scaling_x = w->fLength*CELL_SIZE;
 		scaling_z = WALL_THICKNESS;
 	}
 	else
 	{
-		trans_z = w->fPosZ;
-		trans_x = w->fPosX;
-		scaling_z = w->fLength;
+		trans_z = w->fPosZ*CELL_SIZE;
+		trans_x = w->fPosX*CELL_SIZE;
+		scaling_z = w->fLength*CELL_SIZE;
 		scaling_x = WALL_THICKNESS;
 	}
 	trans_y = w->fPosY + WALL_HEIGHT/2;
@@ -51,7 +52,7 @@ int wall_can_be_here (wall *w, int x, int z)
 	{
 		if (z==w->fPosZ)
 		{
-			if (x<=w->fPosX + w->fLength/2 && x<=w->fPosX - w->fLength/2)
+			if (x<= (int) (w->fPosX + w->fLength/2) && x>= (int) (w->fPosX - w->fLength/2))
 			return 0;
 		}
 	}
@@ -59,8 +60,7 @@ int wall_can_be_here (wall *w, int x, int z)
 	{
 		if (x==w->fPosX)
 		{
-			return 0;
-			if (z<=w->fPosZ + w->fLength/2 && z<=w->fPosZ - w->fLength/2)
+			if (z<= (int) (w->fPosZ + w->fLength/2) && z >= (int) (w->fPosZ - w->fLength/2))
 			return 0;
 		}
 	}
