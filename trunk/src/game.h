@@ -1,0 +1,11 @@
+#ifndef __GAME
+#define __GAME
+
+#include "map.h"
+#include "bille.h"
+
+void initMap (map *pMap);
+void renderBilles (bille *pBilles [85]);
+void initBilles (map *pMap, bille *pBilles [85]);
+
+#endif
