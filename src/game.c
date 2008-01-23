@@ -4,8 +4,9 @@
 #include "map.h"
 #include "wall.h"
 #include "bille.h"
+#include "man.h"
 
-void initBilles (map *pMap, bille *pBilles [85])
+void initBilles (map *pMap, bille *pBilles [85], man *m)
 {
 	int z = -5, i = 0, x = -5;
 	while (x <= 5)
@@ -13,12 +14,13 @@ void initBilles (map *pMap, bille *pBilles [85])
 		z = -5;
 		while (z <= 5)
 		{
-			if (map_can_be_here (pMap, x, z))
-			{
-				pBilles [i] = newBille (x, 0, z, TRUE);
-				i++;
-			}
-			z++;
+			if(m->ix!=x || m->iz!=z)
+				if (map_can_be_here (pMap, x, z))
+				{
+					pBilles [i] = newBille (x, 0, z, TRUE);
+					i++;
+				}
+				z++;
 		}
 		x++;
 	}
