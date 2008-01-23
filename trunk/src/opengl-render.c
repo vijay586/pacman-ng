@@ -34,7 +34,7 @@ void initOpenGL (int iWidth, int iHeight)
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity ();
 
-	gluPerspective ( 45.0, ((float)iWidth) / ((float)iHeight), 1.0, 800.0);
+	gluPerspective (45.0, ((float) iWidth) / ((float) iHeight), 1.0, 800.0);
 	
 	/* set the light */
 	float light_intensity [] = {1, 1, 1, 0};
