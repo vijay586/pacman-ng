@@ -32,7 +32,7 @@ int main (int argc, char *argv [])
 	atexit (cbExit);
 	glutInit (&argc, argv);
 	initGlutWindow (WIN_W, WIN_H);
-	initGlut ();
+	initGlut (cbDisplay, cbKeyboard, cbKeyboardSpecial);
 	initOpenGL (WIN_W, WIN_H);
 	initGame ();
 	glutMainLoop ();
@@ -177,17 +177,6 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 		case GLUT_KEY_RIGHT:
 			break;
 	}
-}
-
-void initGlut ()
-{
-	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_ACCUM | GLUT_DEPTH);	
-	glutDisplayFunc (cbDisplay);
-//	glutIdleFunc (renderOpenGL);
-//	glutReshapeFunc (resize);
-	glutKeyboardFunc (cbKeyboard);
-	glutSpecialFunc (cbKeyboardSpecial);
-	
 }
 
 void cbExit ()
