@@ -26,14 +26,17 @@ inline void renderBille (bille *b)
 	glPopMatrix ();
 }
 
-void set_bille_visibility (bille *pBilles [85], int x, int z)
+void set_bille_visibility (bille *pBilles [85], int x, int z, int score)
 {
 	int i = 0;
 	while (i < 85)
 	{
 		if (pBilles [i] != NULL)
 			if(pBilles[i]->iz == z && pBilles[i]->ix == x)
+			{
 				pBilles[i]->bVisible=FALSE;
+				score += 10;
+			}
 		i++;
 	}
 	

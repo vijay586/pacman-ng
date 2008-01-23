@@ -90,7 +90,7 @@ void initMap (map *pMap)
 	wall *w17 = wall_new (1.0, 0.0, -2.0, VERTICAL, 1);
 	map_add_wall (pMap, w17);
 	
-	wall *w18 = wall_new (-2.0, 0.0, -2.0, VERTICAL, 1);
+	wall *w18 = wall_new (-1.0, 0.0, -2.0, VERTICAL, 1);
 	map_add_wall (pMap, w18);
 	
 	wall *w19 = wall_new (2.0, 0.0, -3.0, HORIZONTAL, 3);
