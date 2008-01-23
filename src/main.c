@@ -46,9 +46,9 @@ void initGame ()
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
 	renderGround (pGround);
-	testWall ();
-	testBille ();
-	testPac ();
+//	testWall ();
+//	testBille ();
+//	testPac ();
 	glEndList ();
 }
 
@@ -197,5 +197,6 @@ void initGlut ()
 void cbExit ()
 {
 	/* free your stuff here, we're exiting */
+	glDeleteTextures (1, &(pGround->uiTextureId));
 	free (pGround);
 }

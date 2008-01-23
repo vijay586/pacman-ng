@@ -1,9 +1,12 @@
 #ifndef __GROUND
 #define __GROUND
 
+#include "texture.h"
+
 struct _ground
 {
 	int iWidth, iHeight, iDepth;
+	unsigned int uiTextureId;
 };
 typedef struct _ground ground;
 

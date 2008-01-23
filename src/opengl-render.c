@@ -19,7 +19,6 @@ void initOpenGL (int iWidth, int iHeight)
 	glDisable (GL_DITHER);
 	glDisable (GL_NORMALIZE);
 	glEnable (GL_COLOR_MATERIAL);
-	glEnable (GL_TEXTURE_2D);
 	glEnable (GL_TEXTURE_RECTANGLE_ARB);
 	glEnable (GL_LIGHTING);
 //	glEnable (GL_LIGHT0);
@@ -27,7 +26,7 @@ void initOpenGL (int iWidth, int iHeight)
 //	glEnable (GL_LIGHT2);
 	glEnable (GL_LIGHT3);
 	glEnable (GL_DEPTH_TEST);
-	glDepthFunc (GL_LESS);
+	glDepthFunc (GL_LEQUAL);
 //	glEnable (GL_BLEND);
 //	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glViewport (0, 0, iWidth, iHeight);
