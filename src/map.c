@@ -39,7 +39,3 @@ int map_can_be_here (map *m, int x, int z)
 	}
 	return 1;
 }
-
-
-
-
