@@ -36,7 +36,6 @@ unsigned int textureFile (const char *pcFile, int iWidth, int iHeight)
 	return uiTexture;
 }
 
-
 GLuint LoadTextureRAW( const char * filename, int wrap )
 {
   GLuint texture;

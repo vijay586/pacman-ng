@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/freeglut.h>
 #include <stdio.h>
+#include <math.h>
 #include "glut-extra.h"
 #include "global.h"
 #include "opengl-render.h"
@@ -25,12 +26,14 @@ void cbExit (void);
 
 ground *pGround;
 man *pPacman;
+man *pEvil;
 map *pMap;
 bille *pBilles [85];
 unsigned int displayList;
-int score;
 unsigned int texture;
-boolean bGameOver;
+boolean bGameOver = FALSE, bWin = FALSE;
+int iScore = 0;
+char cScoreNum [5];
 
 int main (int argc, char *argv [])
 {
@@ -44,21 +47,62 @@ int main (int argc, char *argv [])
 	return 0;
 }
 
+void moveEvil (int val)
+{
+	int x = rand()%4;
+	int check = 0;
+	while (check==0)
+	{
+		x = rand()%4;
+		check = 0;
+		switch (x)
+		{
+			case 0: 
+				check = map_can_be_here (pMap, pEvil->ix+1, pEvil->iz);
+				if (check) pEvil->ix++;
+				break;
+				
+			case 1: 
+				check = map_can_be_here (pMap, pEvil->ix, pEvil->iz+1);
+				if (check) pEvil->iz++;
+				break;
+			
+			case 2: 
+				check = map_can_be_here (pMap, pEvil->ix-1, pEvil->iz);
+				if (check) pEvil->ix--;
+				break;
+			
+			case 3: 
+				check = map_can_be_here (pMap, pEvil->ix, pEvil->iz-1);
+				if (check) pEvil->iz--;
+				break;
+		}
+	}
+	
+	glutPostRedisplay ();
+	
+	if (pPacman->ix == pEvil->ix && pPacman->iz == pEvil->iz)
+		bGameOver = TRUE;
+	
+	if (!bGameOver && !bWin)
+		glutTimerFunc (1000, moveEvil, 1);
+}
+
 void initGame ()
 {
 	pGround = newGround (13, 2, 13);
 	pPacman = newMan (-1, 0, 5, FALSE);
 	pMap = newMap ();
+	pEvil = newMan (-2, 0, -2, TRUE);
 	initMap (pMap);
 	initBilles (pMap, pBilles, pPacman);
-	score=0;
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
 	//renderGround (pGround);
 	//renderMap (pMap);
 	//renderMan (pPacman);
 	glEndList ();
-	
+	moveEvil (1);
 	texture = LoadTextureRAW( "texture.raw", TRUE );
 }
 
@@ -68,7 +112,7 @@ void testTexture ()
 	glBindTexture( GL_TEXTURE_2D, texture );
 
 	glPushMatrix();
-	glColor3f (1.0, 1.0, 1.0);
+	glColor3f (0.0, 1.0, 0.0);
 	glScaled (60.0, 60.0, 60.0);
 	glBegin( GL_QUADS );
 	glTexCoord2d(0.0,0.0); glVertex3d(-1.0, 0.0, +1.0);
@@ -86,8 +130,21 @@ void cbDisplay ()
 	renderGround (pGround);
 	renderMap (pMap);
 	renderMan (pPacman);
+	renderMan (pEvil);
 	renderBilles (pBilles);
-	renderText (score);
+	// sprintf (scoreNum, "%d", score);
+	// renderText (scoreNum);
+	if (bGameOver)
+	{
+		renderText ("Game Over!!!");
+		printf ("Game Over!!!\n");
+	}
+	if (bWin)
+	{
+		renderText ("You WIN!!!");
+		printf ("You WIN!!!\n");
+	}
+	printf ("Score: %d\n", iScore);
 	glutSwapBuffers ();
 }
 
@@ -103,40 +160,50 @@ void cbKeyboard (unsigned char ucKey, int iX, int iY)
 
 void cbKeyboardSpecial (int iKey, int iX, int iY)
 {
-	switch (iKey)
+	if (bGameOver == FALSE && bWin == FALSE)
 	{
-		case GLUT_KEY_UP:
-			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
-			{
-				bGameOver = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz-1, score);
-				pPacman->iz--;
-			}
-			break;
-		case GLUT_KEY_DOWN:
-			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
-			{
-				bGameOver = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz+1, score);
-				pPacman->iz++;
-			}
-			break;
-		case GLUT_KEY_LEFT:
-			if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
-			{
-				bGameOver = set_bille_visibility (pBilles, pPacman->ix-1, pPacman->iz, score);
-				pPacman->ix--;
-			}
-			break;
-		case GLUT_KEY_RIGHT:
-			if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
-			{
-				bGameOver = set_bille_visibility (pBilles, pPacman->ix+1, pPacman->iz, score);
-				pPacman->ix++;
-			}
-			break;
+		switch (iKey)
+		{
+			case GLUT_KEY_UP:
+				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
+				{
+					bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz-1, iScore);
+					iScore+=10;
+					pPacman->iz--;
+				}
+				break;
+			case GLUT_KEY_DOWN:
+				if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
+				{
+					bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz+1, iScore);
+					iScore+=10;
+					pPacman->iz++;
+				}
+				break;
+			case GLUT_KEY_LEFT:
+				if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
+				{
+					bWin = set_bille_visibility (pBilles, pPacman->ix-1, pPacman->iz, iScore);
+					iScore+=10;
+					pPacman->ix--;
+				}
+				break;
+			case GLUT_KEY_RIGHT:
+				if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
+				{
+					bWin = set_bille_visibility (pBilles, pPacman->ix+1, pPacman->iz, iScore);
+					iScore+=10;
+					pPacman->ix++;
+				}
+				break;
+		}
+		
+		if (pPacman->ix == pEvil->ix && pPacman->iz == pEvil->iz)
+			bGameOver = TRUE;
+		
+		bWin = set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, iScore);
+		glutPostRedisplay ();
 	}
-	if(bGameOver)
-		gameOver();
-	glutPostRedisplay ();
 }
 
 void cbExit ()

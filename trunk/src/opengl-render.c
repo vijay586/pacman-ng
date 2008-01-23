@@ -8,7 +8,7 @@ void renderOpenGL (unsigned int uiDL, int x, int z)
 	glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
-	gluLookAt (x, 120.0, z+150.0, x, 0.0, z, 0.0, 1.0, 0.0);
+	gluLookAt (x, 120.0, z + 150.0, x, 0.0, z, 0.0, 1.0, 0.0);
 //	glCallList (uiDL);
 //	glutSwapBuffers ();
 }
