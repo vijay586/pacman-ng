@@ -2,6 +2,6 @@
 #define __GLUT
 
 void initGlut ();
-void initGlutWindow (int iWidth, int iHeight, int *pMainWindow, int *pTopViewWindow);
+void initGlutWindow (int iWidth, int iHeight);
 
 #endif

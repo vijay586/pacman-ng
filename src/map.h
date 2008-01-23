@@ -14,7 +14,6 @@ struct _map
 };
 typedef struct _map map;
 
-
 map *map_new ();
 void map_add_wall (map *m, wall *w);
 void map_draw (map *m);
