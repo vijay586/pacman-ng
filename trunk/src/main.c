@@ -10,6 +10,7 @@
 #include "man.h"
 #include "map.h"
 #include "game.h"
+#include "text.h"
 #include "texture.h"
 
 #define WIN_W 800
@@ -27,6 +28,7 @@ man *pPacman;
 map *pMap;
 bille *pBilles [85];
 unsigned int displayList;
+int score;
 unsigned int texture;
 
 int main (int argc, char *argv [])
@@ -48,6 +50,7 @@ void initGame ()
 	pMap = newMap ();
 	initMap (pMap);
 	initBilles (pMap, pBilles, pPacman);
+	score=0;
 	displayList = glGenLists (1);
 	glNewList (displayList, GL_COMPILE);
 	//renderGround (pGround);
@@ -85,7 +88,7 @@ void cbDisplay ()
 	renderMap (pMap);
 	renderMan (pPacman);
 	renderBilles (pBilles);
-	
+	renderText (score);
 	glutSwapBuffers ();
 }
 
@@ -107,28 +110,28 @@ void cbKeyboardSpecial (int iKey, int iX, int iY)
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz - 1))
 			{
 				pPacman->iz--;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_DOWN:
 			if (map_can_be_here (pMap, pPacman->ix, pPacman->iz + 1))
 			{
 				pPacman->iz++;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_LEFT:
 			if (map_can_be_here (pMap, pPacman->ix - 1, pPacman->iz))
 			{
 				pPacman->ix--;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 		case GLUT_KEY_RIGHT:
 			if (map_can_be_here (pMap, pPacman->ix + 1, pPacman->iz))
 			{
 				pPacman->ix++;
-				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz);
+				set_bille_visibility (pBilles, pPacman->ix, pPacman->iz, score);
 			}
 			break;
 	}
